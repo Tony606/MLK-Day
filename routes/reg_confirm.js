@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     console.log(req.body);
     res.render('reg_confirm', {
 
-        email: req.body.email
+
 
         }
 
