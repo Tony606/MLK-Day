@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<%include Header%>
+<form method="post" action="/register">
+
+        <label>Email:</label>
+        <input type="text" name="email">
+
+        <label>First Name:</label>
+        <input type="text" name="first_name">
+
+        <label>Last Name:</label>
+        <input type="text" name="last_name">
+
+        <label>Phone Number:</label>
+        <input type="text" name="phone_number">
+
+        <label>Shirt Size</label>
+    <select name=" shirt_size">
+        <option>Select One</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+    </select>
+
+        <label>Volunteer status</label>
+        <select name="Status">
+            <option>Select One</option>
+            <option>alumni</option>
+            <option>student</option>
+            <option>faculty</option>
+        </select>
+
+        <label>Which school do you attend?</label>
+        <select name="School">
+            <option>Select One</option>
+            <option>Univeristy of Michigan Dearborn</option>
+            <option>henry Ford</option>
+
+        </select>
+
+        <label>Select an agency</label>
+        <select name="agency">
+            <option>Select one</option>
+            <option>Gleaners</option>
+            <option>Urban Farming</option>
+
+        </select>
+
+            <input type="checkbox" name="age" value="18 and older" id="age"><label> 18 and older
+
+        <input type="submit" value="Register">
+
+</form>
