@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
 var passportLocal = require('passport-local');
+var mysql     =    require('mysql');
 
 var landing = require('./routes/landing');
 var users = require('./routes/users');
@@ -40,6 +41,19 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var pool      =    mysql.createPool({
+    connectionLimit : 100, //important
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'mlk_day',
+    debug    :  false
+});
+
+
+
+
 
 passport.use(new passportLocal.Strategy(function(username, password, done){
     //database call to find user goes here
@@ -77,6 +91,25 @@ app.post('/login', passport.authenticate('local'), function(req,res){
 
 app.post('/register', function(req,res){
     console.log(JSON.stringify(req.body));
+    if(!req.body.age){
+        req.body.age = 0;
+    }
+    pool.getConnection(function(err,connection){
+        if (err) {
+            res.json({"code" : 100, "status" : "Error in connection database"});
+            return;
+        }
+
+        console.log('connected as id ' + connection.threadId);
+        var  post = req.body;
+        connection.query("INSERT INTO volunteer SET ?", post, function(err, result){
+            if (err) {
+                console.log(err.message);
+            } else {
+                console.log('success');
+            }
+        });
+    });
     res.redirect('/reg_confirm')
 });
 

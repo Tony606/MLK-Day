@@ -3,19 +3,19 @@
 <form method="post" action="/register">
 
         <label>Email:</label>
-        <input type="text" name="email">
+        <input type="text" name="Email">
 
         <label>First Name:</label>
-        <input type="text" name="first_name">
+        <input type="text" name="Fname">
 
         <label>Last Name:</label>
-        <input type="text" name="last_name">
+        <input type="text" name="Lname">
 
         <label>Phone Number:</label>
-        <input type="text" name="phone_number">
+        <input type="text" name="Phone_num">
 
         <label>Shirt Size</label>
-    <select name=" shirt_size">
+    <select name="Shirt_Size">
         <option>Select One</option>
         <option>Small</option>
         <option>Medium</option>
@@ -23,7 +23,7 @@
     </select>
 
         <label>Volunteer status</label>
-        <select name="Status">
+        <select name="status">
             <option>Select One</option>
             <option>alumni</option>
             <option>student</option>
@@ -31,7 +31,7 @@
         </select>
 
         <label>Which school do you attend?</label>
-        <select name="School">
+        <select name="School_Name">
             <option>Select One</option>
             <option>Univeristy of Michigan Dearborn</option>
             <option>henry Ford</option>
@@ -39,14 +39,14 @@
         </select>
 
         <label>Select an agency</label>
-        <select name="agency">
+        <select name="Agency_Id">
             <option>Select one</option>
-            <option>Gleaners</option>
-            <option>Urban Farming</option>
+            <option value="1">Gleaners</option>
+            <option value="2">Urban Farming</option>
 
         </select>
 
-            <input type="checkbox" name="age" value="18 and older" id="age"><label> 18 and older
+            <input type="checkbox" name="age" value="1" id="over"><label> 18 and older
 
         <input type="submit" value="Register">
 
