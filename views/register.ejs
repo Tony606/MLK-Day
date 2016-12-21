@@ -1,52 +1,73 @@
 <!DOCTYPE html>
+
 <%include Header%>
 <form method="post" action="/register">
 
+       <p>
         <label>Email:</label>
-        <input type="text" name="Email">
+        <input type="email" name="Email">
+       </p>
 
-        <label>First Name:</label>
-        <input type="text" name="Fname">
+        <p>
+            <label>First Name:</label>
+            <input type="text" name="Fname">
+        </p>
 
+
+    <p>
         <label>Last Name:</label>
         <input type="text" name="Lname">
+    </p>
 
-        <label>Phone Number:</label>
-        <input type="text" name="Phone_num">
+      <p>
+          <label>Phone Number:</label>
+          <input type="text" name="Phone_num">
+      </p>
 
-        <label>Shirt Size</label>
-    <select name="Shirt_Size">
-        <option>Select One</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-    </select>
 
-        <label>Volunteer status</label>
-        <select name="status">
-            <option>Select One</option>
-            <option>alumni</option>
-            <option>student</option>
-            <option>faculty</option>
-        </select>
+       <p>
+           <label>Shirt Size</label>
+           <select name="Shirt_Size">
+               <option>Select One</option>
+               <option>Small</option>
+               <option>Medium</option>
+               <option>Large</option>
+           </select>
+       </p>
 
-        <label>Which school do you attend?</label>
-        <select name="School_Name">
-            <option>Select One</option>
-            <option>Univeristy of Michigan Dearborn</option>
-            <option>henry Ford</option>
+        <p>
+            <label>Volunteer status</label>
+            <select name="status">
+                <option>Select One</option>
+                <option>alumni</option>
+                <option>student</option>
+                <option>faculty</option>
+            </select>
+        </p>
 
-        </select>
+        <p>
+            <label>Which school do you attend?</label>
+            <select name="School_Name">
+                <option>Select One</option>
+                <option>Univeristy of Michigan Dearborn</option>
+                <option>henry Ford</option>
 
-        <label>Select an agency</label>
-        <select name="Agency_Id">
-            <option>Select one</option>
-            <option value="1">Gleaners</option>
-            <option value="2">Urban Farming</option>
+            </select>
+        </p>
 
-        </select>
+        <p>
+            <label>Select an agency</label>
+            <select name="Agency_Id">
+                <option>Select one</option>
+                <option value="1">Gleaners</option>
+                <option value="2">Urban Farming</option>
 
-            <input type="checkbox" name="age" value="1" id="over"><label> 18 and older
+            </select>
+        </p>
+
+         <p>
+             <input type="checkbox" name="age" value="1" id="over"><label> 18 and older</label>
+         </p>
 
         <input type="submit" value="Register">
 

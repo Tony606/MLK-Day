@@ -1,3 +1,12 @@
 <%include Header%>
 
 <h1>Welcome to the administration page</h1>
+<form method="post" action="/admin">
+<label>Profile Search</label>
+<input type="email" name="search">
+    <input type="submit" value="search">
+</form>
+
+<form method="post" action="/admin">
+    <input type="submit" name="dump" value="Data Dump">
+</form>
