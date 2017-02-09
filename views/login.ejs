@@ -1,16 +1,26 @@
 <!DOCTYPE html>
+
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/form.css' />
+
+</head>
 <%include Header%>
+<h1> Please Enter Login Credentials</h1>
+
 
 <body>
     <form method="post" action="/login">
-            <label>Username:</label>
-            <input type="text" name="username">
+            <label>Username:</label><br>
+            <input type="email" name="username"><br>
 
-            <label>Password:</label>
-            <input type="password" name="password">
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
 
-            <input type="submit" value="Login">
+            <input type="submit" value="Login"><br>
 
     </form>
 </body>
 
+</html>

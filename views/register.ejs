@@ -1,53 +1,66 @@
 <!DOCTYPE html>
+
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/form.css' />
+
+</head>
 <%include Header%>
-<form method="post" action="/register">
+    <body>
+        <h1> MLK Day Volunteer Registration Form</h1>
 
-        <label>Email:</label>
-        <input type="text" name="email">
 
-        <label>First Name:</label>
-        <input type="text" name="first_name">
+        <form method="post" action="/register">
 
-        <label>Last Name:</label>
-        <input type="text" name="last_name">
+                <label>*Email:</label><br>
+                <input type="email" placeholder="Enter email address" name="email" required><br>
 
-        <label>Phone Number:</label>
-        <input type="text" name="phone_number">
+                <label>*First Name:</label><br>
+                <input type="text" placeholder="Enter first name" name="first_name" required><br>
 
-        <label>Shirt Size</label>
-    <select name=" shirt_size">
-        <option>Select One</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-    </select>
+                <label>*Last Name:</label><br>
+                <input type="text" placeholder="Enter last name" name="last_name" required><br>
 
-        <label>Volunteer status</label>
-        <select name="Status">
-            <option>Select One</option>
-            <option>alumni</option>
-            <option>student</option>
-            <option>faculty</option>
-        </select>
+                <label>*Phone Number:</label><br>
+                <input type="tel" placeholder="999-999-9999" name="phone_number" required><br>
 
-        <label>Which school do you attend?</label>
-        <select name="School">
-            <option>Select One</option>
-            <option>Univeristy of Michigan Dearborn</option>
-            <option>henry Ford</option>
+                <label>*Shirt Size</label>
+                <select name=" shirt_size" required>
+                    <option>Select One</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                </select><br>
 
-        </select>
+                <label>*Volunteer status</label>
+                <select name="Status" required>
+                    <option>Select One</option>
+                    <option>alumni</option>
+                    <option>student</option>
+                    <option>faculty</option>
+                </select><br>
 
-        <label>Select an agency</label>
-        <select name="agency">
-            <option>Select one</option>
-            <option>Gleaners</option>
-            <option>Urban Farming</option>
+                <label>*College Affiliation</label>
+                <select name="School" required>
+                    <option>Select One</option>
+                    <option>Univeristy of Michigan Dearborn</option>
+                    <option>Henry Ford Community College</option>
+                </select><br>
 
-        </select>
+                <label>*Select an agency</label>
+                <select name="agency" required>
+                    <option>Select one</option>
+                    <option>Gleaners</option>
+                    <option>Urban Farming</option>
+                </select><br>
+                <input type="checkbox" name="age" value="18 and older" id="age" required><label> 18 and older</label><br>
+                <input type="submit" value="Register"><br>
 
-            <input type="checkbox" name="age" value="18 and older" id="age"><label> 18 and older
+            <a href = "images/campus.png">View Campus Map</a><img class ="map"/><br>
+        </form>
 
-        <input type="submit" value="Register">
 
-</form>
+        <a download="campus.png" href="./images/campus.png" title="campus map"><img alt ="U of M campus map" src="/images/campus.png"></a>
+    </body>
+</html>

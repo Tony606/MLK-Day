@@ -1,0 +1,94 @@
+h1{
+    color: darkblue;
+    background-color: aliceblue;
+}
+.banner {
+    height: 90%;
+    width: 50%;
+
+}
+input[type=text], input[type=password], input[type=email], input[type=tel]{
+    width: 50%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+header{
+    font-family: script;
+    font-size: 2em;
+    /*height: 110px;*/
+    border-bottom: 5px solid black;
+    background: -webkit-linear-gradient(45deg, rgba(235, 208, 49, 1),white);
+    background:	-o-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background: -moz-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background-image: linear-gradient(45deg, #ebd031, white);
+    text-align: left;
+    width: 100%;
+    height: 175px;
+    margin-top:0;
+    margin-bottom: 0;
+    padding: 0;
+    color: #000066;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: inline-block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a{
+
+    background-color: #cac6c9;
+    display: inline-block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: red;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
