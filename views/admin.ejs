@@ -1,3 +1,29 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+
+<head>
+
+    <link rel='stylesheet' href='/stylesheets/form.css' />
+
+</head>
 
 <%include Header%>
+<body>
 <h1>Welcome to this crap ass webpage</h1>
+
+<form method="post" action="/register">
+
+    <label>*Agency Name:</label><br>
+    <input type="text" placeholder="Enter agency name" name="agency" required><br>
+
+    <label>Total Capacity:</label><br>
+    <input type="number" placeholder="use scroll bar or enter number" name="capacity" required><br>
+
+    <label class ="desc">*Event Description:</label><br>
+    <input type="text" placeholder="Enter event description" name="description" class="desc" required><br>
+
+
+</form>
+</body>
+</html>
+
