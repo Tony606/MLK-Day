@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/form.css' />
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/stylesheets/form.css' />
+    </head>
+    <%include Header%>
+    <body>
+    <h1> Please Enter Login Credentials</h1>
+        <form method="post" action="/login">
+                <label>Username:</label><br>
+                <input type="email" name="username"><br>
 
-</head>
-<%include Header%>
-<h1> Please Enter Login Credentials</h1>
+                <label>Password:</label><br>
+                <input type="password" name="password"><br>
 
+                <input type="submit" value="Login"><br>
 
-<body>
-    <form method="post" action="/login">
-            <label>Username:</label><br>
-            <input type="email" name="username"><br>
-
-            <label>Password:</label><br>
-            <input type="password" name="password"><br>
-
-            <input type="submit" value="Login"><br>
-
-    </form>
-</body>
+        </form>
+    </body>
 
 </html>

@@ -1,6 +1,9 @@
+<!DOCTYPE HTML>
+<%src="https://maps.googleapis.com/maps/api/js?callback=myMap"%>
 <html>
 <head>
-    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='/stylesheets/form.css' />
 
 </head>
@@ -26,7 +29,7 @@
 
                    <th>
                     <label>*Shirt Size</label>
-                    <select name=" shirt_size" required>
+                    <select name=" shirt_size" class="form-control" required>
                         <option>Select One</option>
                         <option>Small</option>
                         <option>Medium</option>
@@ -49,7 +52,7 @@
                             <option>Select One</option>
                             <option>Univeristy of Michigan Dearborn</option>
                             <option>Henry Ford Community College</option>
-                        </select>
+                        </select><br>
                         <input type="checkbox" name="age" value="18 and older" id="age" required><label>I am 18 or older</label><br>
                         </th>
 
@@ -63,23 +66,7 @@
                         </th>
                     </tr>
 
-                    <tr>
-                        <th>
-                            <div class="dropdown">
-                                <button class="dropbtn">Agency</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Gleaners</a>
-                                    <a href="#">Urban Farming</a>
-                                    <a href="#">Henry Ford Estate</a>
-                                </div>
-                                <button class="dropbtn">School</button>
-                                <div class="dropdown-content">
-                                    <a href="#">University of Michigan Dbn</a>
-                                    <a href="#">Henry Ford Community College</a>
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
+
                 </table>
 
 

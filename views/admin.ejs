@@ -1,29 +1,30 @@
 <!DOCTYPE HTML>
+//execute a query
+//
+
 <html lang = "en">
 
-<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/stylesheets/form.css' />
 
-    <link rel='stylesheet' href='/stylesheets/form.css' />
+    </head>
 
-</head>
+    <%include Header%>
+    <body>
+        <h1>Welcome to the administrator page</h1>
 
-<%include Header%>
-<body>
-<h1>Welcome to this crap ass webpage</h1>
+        <form method="post" action="/admin">
 
-<form method="post" action="/register">
+            <label>*Agency Name:</label><br>
+            <input type="text" placeholder="Enter agency name" name="agency" required><br>
 
-    <label>*Agency Name:</label><br>
-    <input type="text" placeholder="Enter agency name" name="agency" required><br>
-
-    <label>Total Capacity:</label><br>
-    <input type="number" placeholder="use scroll bar or enter number" name="capacity" required><br>
-
-    <label class ="desc">*Event Description:</label><br>
-    <input type="text" placeholder="Enter event description" name="description" class="desc" required><br>
-
-
-</form>
-</body>
+            <label>*Total Capacity:</label><br>
+            <input type="number" placeholder="use scroll bar or enter number" name="capacity" required><br>
+            <label>*Event Description:</label><br>
+            <textarea class ="desc" placeholder="Enter event description"></textarea><br>
+        </form>
+    </body>
 </html>
 
