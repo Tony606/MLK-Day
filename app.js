@@ -211,7 +211,6 @@ app.post('/checkin', function(req,res){
             } else {
                 console.log('success');
                 console.log(result);
-
                 res.send(JSON.stringify(result,null,'\t'));
             }
         });
