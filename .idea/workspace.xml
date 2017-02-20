@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a38d296d-efe5-4909-9378-286690384a52" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/checkin.ejs" afterPath="$PROJECT_DIR$/views/checkin.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/register.ejs" afterPath="$PROJECT_DIR$/views/register.ejs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -448,7 +445,7 @@
       <workItem from="1487565077174" duration="3196000" />
       <workItem from="1487568299083" duration="6905000" />
       <workItem from="1487607108170" duration="29000" />
-      <workItem from="1487607485992" duration="1455000" />
+      <workItem from="1487607485992" duration="1678000" />
     </task>
     <task id="LOCAL-00001" summary="I added code to the stylesheet &quot;style&quot; and added an images folder, added code to the header page and register page.">
       <created>1486669652018</created>
@@ -499,11 +496,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487604192158</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Merge branch 'Develop' of https://github.com/Tony606/MLK-Day into feature/localBranch&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;app.js&#10;#&#9;node_modules/mysql/Changes.md&#10;#&#9;node_modules/mysql/Readme.md&#10;#&#9;node_modules/mysql/lib/Connection.js&#10;#&#9;node_modules/mysql/lib/ConnectionConfig.js&#10;#&#9;node_modules/mysql/lib/Pool.js&#10;#&#9;node_modules/mysql/lib/PoolCluster.js&#10;#&#9;node_modules/mysql/lib/PoolConnection.js&#10;#&#9;node_modules/mysql/lib/protocol/Auth.js&#10;#&#9;node_modules/mysql/lib/protocol/Parser.js&#10;#&#9;node_modules/mysql/lib/protocol/constants/errors.js&#10;#&#9;node_modules/mysql/lib/protocol/packets/ComPingPacket.js&#10;#&#9;node_modules/mysql/lib/protocol/packets/ComQuitPacket.js&#10;#&#9;node_modules/mysql/lib/protocol/packets/ComStatisticsPacket.js&#10;#&#9;node_modules/mysql/lib/protocol/packets/EmptyPacket.js&#10;#&#9;node_modules/mysql/lib/protocol/packets/RowDataPacket.js&#10;#&#9;node_modules/mysql/lib/protocol/sequences/Handshake.js&#10;#&#9;node_modules/mysql/lib/protocol/sequences/Query.js&#10;#&#9;node_modules/mysql/lib/protocol/sequences/Statistics.js&#10;#&#9;node_modules/mysql/package.json&#10;#&#9;views/admin.ejs&#10;#&#9;views/checkin.ejs&#10;#&#9;views/reg_confirm.ejs&#10;#&#9;views/register.ejs&#10;">
+      <created>1487608963923</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1487608963923</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75874000" />
+    <option name="totallyTimeSpent" value="76097000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
