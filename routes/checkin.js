@@ -7,6 +7,9 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
     res.render('checkin');
+    for (var i = 0; i < rows.length; i++) {
+        console.log(rows[i].name);
+    };
 });
 
 module.exports = router;

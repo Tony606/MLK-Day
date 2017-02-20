@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
 var passportLocal = require('passport-local');
-var mysql     =    require('mysql');
+var mysql = require('mysql');
 
 var landing = require('./routes/landing');
 var users = require('./routes/users');
@@ -156,7 +156,7 @@ app.post('/register', function(req,res){
 
         console.log('connected as id ' + connection.threadId);
         var  post = req.body;
-        connection.query("INSERT INTO volunteer SET ?", post, function(err, result){
+        connection.query('INSERT INTO volunteer SET ?', post, function(err, result){
             if (err) {
                 console.log(err.message);
             } else {
@@ -179,30 +179,20 @@ app.post('/admin', function(req,res){
         }
 
         console.log('connected as id ' + connection.threadId);
-        if(req.body.search){
-            var  search = req.body.search;
-            connection.query("select * from volunteer where email = ?", search, function(err, result){
+        var  post = req.body;
+            connection.query("insert into agency set ?" , post, function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {
                     console.log('success');
-                    res.send(JSON.stringify(result,null,'\t'));
-                }
-            });}
-        else{
-
-            connection.query("select * from volunteer ", function(err, result){
-                if (err) {
-                    console.log(err.message);
-                } else {
-                    console.log('success');
-                    res.send(JSON.stringify(result,null,'\t'));
+                   
                 }
             });
-        }
+
     });
-    //res.redirect('/admin_search')
+    res.redirect("/admin")
 });
+
 app.post('/checkin', function(req,res){
     console.log(JSON.stringify(req.body));
 
@@ -215,11 +205,13 @@ app.post('/checkin', function(req,res){
         console.log('connected as id ' + connection.threadId);
 
         var  search = req.body.search;
-        connection.query("select Fname, Lname, email, Agency_id, Shirt_size from volunteer where email = ?", search, function(err, result){
+        connection.query("SELECT Fname, Lname, Email, Shirt_Size, Agency_name FROM volunteer WHERE Lname = ?", search, function(err, result){
             if (err) {
                 console.log(err.message);
             } else {
                 console.log('success');
+                console.log(result);
+
                 res.send(JSON.stringify(result,null,'\t'));
             }
         });
@@ -260,5 +252,5 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
+app.engine('html',require('ejs').renderFile);
 module.exports = app;

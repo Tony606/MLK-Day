@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
     res.render('admin', {
         isAuthenticated: req.isAuthenticated(),
         user: req.user
+
     });
 });
 

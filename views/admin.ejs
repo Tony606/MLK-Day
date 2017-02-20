@@ -17,13 +17,17 @@
 
         <form method="post" action="/admin">
 
+            <label>*Agency Location:</label><br>
+            <input type="text" placeholder="Enter agency name" name="Location" required><br>
             <label>*Agency Name:</label><br>
-            <input type="text" placeholder="Enter agency name" name="agency" required><br>
-
-            <label>*Total Capacity:</label><br>
-            <input type="number" placeholder="use scroll bar or enter number" name="capacity" required><br>
+            <input type="text" placeholder="Enter agency name" name="Agency_name" required><br>
+            <label>*Table Number:</label><br>
+            <input type="number" placeholder="use scroll bar or enter number" name="Table_num" required><br>
+            <label>*Capacity:</label><br>
+            <input type="number" placeholder="use scroll bar or enter number" name="Capacity" required><br>
             <label>*Event Description:</label><br>
-            <textarea class ="desc" placeholder="Enter event description"></textarea><br>
+            <textarea class ="desc" placeholder="Enter event description" name="Description"></textarea><br>
+            <input type="submit" value="Save"><br>
         </form>
     </body>
 </html>
