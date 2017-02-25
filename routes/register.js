@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../lib/database');
-
 /* GET home page. */
+// get and request from the page
 router.get('/', function(req, res, next) {
     pool.getConnection(function(err,connection){
         if (err) {
@@ -12,12 +12,12 @@ router.get('/', function(req, res, next) {
 
         console.log('connected as id ' + connection.threadId);
 
-        connection.query("select Agency_name, description from agency", function(err, result){
+        connection.query("select Agency_name, Agency_ID, description from agency", function(err, result){
             if (err) {
                 console.log(err.message);
             } else {
                 console.log('success');
-                res.render('register', { title: 'register', agencies: result });
+                res.render('register', { title: 'register', agencies: result }); // rendaring it first time // agencies have result of the queary upthre
 
             }
         });

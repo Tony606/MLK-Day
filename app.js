@@ -49,12 +49,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-
-
-
-
-
-
 app.use('/', landing);
 app.use('/users', users);
 app.use('/login', login);
@@ -63,11 +57,6 @@ app.use('/admin', admin);
 app.use('/checkin', checkin);
 app.use('/reg_confirm', reg_confirm);
 app.use('/admin_search', admin_search);
-
-
-
-
-
 
 
 // catch 404 and forward to error handler

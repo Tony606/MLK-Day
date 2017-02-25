@@ -3,6 +3,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%include ./Header.ejs%>
 <%console.log(JSON.stringify(agencies))%>
+
 <div class="container">
     <form method = "post" class="form-horizontal" role="form" action = "/register">
         <h2>Registration Form</h2>
@@ -10,14 +11,12 @@
             <label for="firstName" class="col-sm-3 control-label">First Name</label>
             <div class="col-sm-9">
                 <input type="text" id="firstName" name="Fname" placeholder="First Name" class="form-control" autofocus>
-
             </div>
         </div>
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Last Name</label>
             <div class="col-sm-9">
                 <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" autofocus>
-
             </div>
         </div>
         <div class="form-group">
@@ -36,16 +35,10 @@
             <label for="Agency" class="col-sm-3 control-label">Agency</label>
             <div class="col-sm-9">
                 <select id="agency" name="Agency_id" class="form-control">
-
                     <option value = '0'>select One</option>
-                    <option value = '1'> <%= agencies[0].Agency_name %> </option>
-                    <option value = '2'> <%= agencies[1].Agency_name %> </option>
-                    <option value = '3'></option>
-
-
-
+                    <option value = <%= agencies[0].Agency_ID%>> <%= agencies[0].Agency_name %> </option>
+                    <option value = <%= agencies[1].Agency_ID%>> <%= agencies[1].Agency_name %> </option>
                 </select>
-
             </div>
         </div> <!-- /.form-group -->
         <div class="form-group">
@@ -98,7 +91,6 @@
                         <input type="checkbox" id="Age" value="1">Yes
                     </label>
                 </div>
-
             </div>
         </div> <!-- /.form-group -->
         <div class="form-group">
@@ -119,12 +111,11 @@
     </form> <!-- /form -->
     <!-- Trigger the modal with a button -->
 
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Open Modal</button>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -141,7 +132,6 @@
 
         </div>
     </div>
-
     <!-- Modal -->
     <div id="myModal1" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -159,7 +149,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
         </div>
     </div>
 </div> <!-- ./container -->

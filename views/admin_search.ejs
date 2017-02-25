@@ -3,9 +3,11 @@
 <h2>search results</h2>
 
 <%console.log(profile)%>
-<ul>
+<br>
+
 <% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
-    <li>first name: <%= element.Fname%></li>
+    <li>first name: <%= element.Fname%></li> </br>
+    <li>last name: <%= element.Lname%></li>
 <%})%>
 
 </ul>

@@ -9,9 +9,9 @@ router.get('/', function(req, res, next) {
         user: req.user
     });
 });
-
+// if post made to admin page then do this
 router.post('/', function(req,res){
-    console.log(JSON.stringify(req.body));
+    console.log(JSON.stringify(req.body)); // error responce
 
     pool.getConnection(function(err,connection){
         if (err) {
@@ -19,6 +19,10 @@ router.post('/', function(req,res){
             return;
         }
 
+        // req is request
+        // body has the search string
+        // body is jason object
+        // search is from ejs file, value of the thing
         console.log('connected as id ' + connection.threadId);
         if(req.body.search){
             var  Email = req.body.Email;

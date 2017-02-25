@@ -2,6 +2,7 @@
  * Created by Tony on 12/3/2016.
  */
 var express = require('express');
+var pool = require('../lib/database');
 var router = express.Router();
 
 /* GET users listing. */
@@ -29,8 +30,6 @@ router.post('/', function(req,res){
                 res.send(JSON.stringify(result,null,'\t'));
             }
         });
-
-
 
     });
     //res.redirect('/admin_search')
