@@ -3,7 +3,7 @@ var router = express.Router();
 var pool = require('../lib/database');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {//reg the actual page, get page
     pool.getConnection(function(err,connection){
         if (err) {
             res.json({"code" : 100, "status" : "Error in connection database"});
@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
                 console.log(err.message);
             } else {
                 console.log('success');
-                res.render('register', { title: 'register', agencies: result });
+                res.render('register', { title: 'register', agencies: result });//json object with 2 fields
 
             }
         });
