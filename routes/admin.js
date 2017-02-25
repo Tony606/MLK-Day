@@ -22,7 +22,7 @@ router.post('/', function(req,res){
         console.log('connected as id ' + connection.threadId);
         if(req.body.search){
             var  Email = req.body.Email;
-            connection.query("select * from volunteer where email = ?", Email, function(err, result){
+            connection.query("select * from volunteer where Email = ?", Email, function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {
