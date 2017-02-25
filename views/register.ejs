@@ -1,74 +1,167 @@
-<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%include ./Header.ejs%>
+<%console.log(JSON.stringify(agencies))%>
+<div class="container">
+    <form method = "post" class="form-horizontal" role="form" action = "/register">
+        <h2>Registration Form</h2>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="firstName" name="Fname" placeholder="First Name" class="form-control" autofocus>
 
-<%include Header%>
-<form method="post" action="/register">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" autofocus>
 
-       <p>
-        <label>Email:</label>
-        <input type="email" name="Email">
-       </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-3 control-label">Phone  Number</label>
+            <div class="col-sm-9">
+                <input type="phoneNumber" name="Phone_Num" id="PhoneNumber" placeholder="Phone Number" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Agency" class="col-sm-3 control-label">Agency</label>
+            <div class="col-sm-9">
+                <select id="agency" name="Agency_id" class="form-control">
 
-        <p>
-            <label>First Name:</label>
-            <input type="text" name="Fname">
-        </p>
+                    <option value = '0'>select One</option>
+                    <option value = '1'> <%= agencies[0].Agency_name %> </option>
+                    <option value = '2'> <%= agencies[1].Agency_name %> </option>
+                    <option value = '3'></option>
 
 
-    <p>
-        <label>Last Name:</label>
-        <input type="text" name="Lname">
-    </p>
 
-      <p>
-          <label>Phone Number:</label>
-          <input type="text" name="Phone_num">
-      </p>
+                </select>
+
+            </div>
+        </div> <!-- /.form-group -->
+        <div class="form-group">
+            <label for="shirtSize" class="col-sm-3 control-label">Shirt Size</label>
+            <div class="col-sm-9">
+                <select id="country" name="Shirt_Size" class="form-control">
+                    <option value = "small">Small</option>
+                    <option value = "medium">Medium</option>
+                    <option value = "Large">Large</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="School_name" class="col-sm-3 control-label">School</label>
+            <div class="col-sm-9">
+                <select id="country" name="School_name" class="form-control">
+                    <option value = "UofM_Dearborn">UofM Dearborn</option>
+                    <option value = "Henry_Ford">Henry Ford</option>
+                    <option value = "Eastern">Eastern</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label name="Satus" class="control-label col-sm-3">Status</label>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            <input name="Status" type="radio" id="student" value="student">Student
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            <input name="Status" type="radio" id="Alumi" value="Alumni">Alumni
+                        </label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label class="radio-inline">
+                            <input name="Status" type="radio" id="Faculty" value="Faculty">Faculty
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /.form-group -->
+        <div class="form-group">
+            <label name ="age" class="control-label col-sm-3">Are you over 18</label>
+            <div class="col-sm-9">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="Age" value="1">Yes
+                    </label>
+                </div>
+
+            </div>
+        </div> <!-- /.form-group -->
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </div>
+        <script>$("#agency").on("change", function () {
+                var $modal = $('#myModal');
+                var $modal1 = $('#myModal1');
+                if($(this).val() === '1'){
+                    $modal.modal('show');
+                }
+                else if($(this).val() ==='2'){
+                    $modal1.modal('show');
+                }
+            });</script>
+    </form> <!-- /form -->
+    <!-- Trigger the modal with a button -->
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><%= agencies[0].Agency_name%></h4>
+                </div>
+                <div class="modal-body">
+                    <p><%= agencies[0].description%></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><%= agencies[1].Agency_name%></h4>
+                </div>
+                <div class="modal-body">
+                    <p><%= agencies[1].description%></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> <!-- ./container -->
 
 
-       <p>
-           <label>Shirt Size</label>
-           <select name="Shirt_Size">
-               <option>Select One</option>
-               <option>Small</option>
-               <option>Medium</option>
-               <option>Large</option>
-           </select>
-       </p>
-
-        <p>
-            <label>Volunteer status</label>
-            <select name="status">
-                <option>Select One</option>
-                <option>alumni</option>
-                <option>student</option>
-                <option>faculty</option>
-            </select>
-        </p>
-
-        <p>
-            <label>Which school do you attend?</label>
-            <select name="School_Name">
-                <option>Select One</option>
-                <option>Univeristy of Michigan Dearborn</option>
-                <option>henry Ford</option>
-
-            </select>
-        </p>
-
-        <p>
-            <label>Select an agency</label>
-            <select name="Agency_Id">
-                <option>Select one</option>
-                <option value="1">Gleaners</option>
-                <option value="2">Urban Farming</option>
-
-            </select>
-        </p>
-
-         <p>
-             <input type="checkbox" name="age" value="1" id="over"><label> 18 and older</label>
-         </p>
-
-        <input type="submit" value="Register">
-
-</form>
