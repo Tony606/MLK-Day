@@ -6,8 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
-var passportLocal = require('passport-local');
-var mysql     =    require('mysql');
+
+var pool = require('./lib/database');
 
 var landing = require('./routes/landing');
 var users = require('./routes/users');
@@ -44,81 +44,17 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-var pool      =    mysql.createPool({
-    connectionLimit : 100, //important
-    host     : 'localhost',
-    user     : 'root',
-    password : 'Burnstuff1302',
-    database : 'mlk_day',
-    debug    :  false
-});
 
 
 
 
 
-passport.use(new passportLocal.Strategy(function(username, password, done){
-    //database call to find user goes here
-    pool.getConnection(function(err,connection){
-        if(err) {
-            //handle it
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-        console.log('connected as id ' + connection.threadId);
-
-        connection.query("SELECT * FROM admin WHERE Username = ?", username, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-                console.log(result[0].Priv_level);
-                if(password == result[0].Password) {
-                    done(null, result[0]);
-                }
-                else{
-
-                    done(null, false,{ message : 'invalid e-mail address or password' } );
-                }
-
-            }
-        });
-
-    });
 
 
-}));
 
-passport.serializeUser(function( user,  done){
-    done(null, user.Username);
-});
-passport.deserializeUser(function( username, done){
-    //here again we will use the id to call the db and get full user info or access a cached profile
-    pool.getConnection(function(err,connection){
-        if(err) {
-            //handle it
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-        console.log('connected as id ' + connection.threadId);
-
-        connection.query("SELECT * FROM admin WHERE Username = ?", username, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-
-                    done(null, true, result);
-
-
-            }
-        });
-
-    });
-
-});
 app.use('/', landing);
 app.use('/users', users);
 app.use('/login', login);
@@ -129,106 +65,11 @@ app.use('/reg_confirm', reg_confirm);
 app.use('/admin_search', admin_search);
 
 
-app.post('/login', passport.authenticate('local'), function(req,res){
-
-    if(req.user.Priv_level == 1) {
-        console.log('is super: '+req.user.Priv_level);
-        res.redirect('/admin');
-    }
-    else{
-        res.redirect('/checkin');
-    }
 
 
 
-});
-
-app.post('/register', function(req,res){
-    console.log(JSON.stringify(req.body));
-    if(!req.body.age){
-        req.body.age = 0;
-    }
-    pool.getConnection(function(err,connection){
-        if (err) {
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-
-        console.log('connected as id ' + connection.threadId);
-        var  post = req.body;
-        connection.query("INSERT INTO volunteer SET ?", post, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-
-            }
-        });
-    });
-
-    res.redirect('/reg_confirm');
-
-});
-app.post('/admin', function(req,res){
-    console.log(JSON.stringify(req.body));
-
-    pool.getConnection(function(err,connection){
-        if (err) {
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-
-        console.log('connected as id ' + connection.threadId);
-        if(req.body.search){
-        var  search = req.body.search;
-        connection.query("select * from volunteer where email = ?", search, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-                res.send(JSON.stringify(result,null,'\t'));
-            }
-        });}
-        else{
-
-            connection.query("select * from volunteer ", function(err, result){
-                if (err) {
-                    console.log(err.message);
-                } else {
-                    console.log('success');
-                    res.send(JSON.stringify(result,null,'\t'));
-                }
-            });
-        }
-    });
-    //res.redirect('/admin_search')
-});
-app.post('/checkin', function(req,res){
-    console.log(JSON.stringify(req.body));
-
-    pool.getConnection(function(err,connection){
-        if (err) {
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-
-        console.log('connected as id ' + connection.threadId);
-
-            var  search = req.body.search;
-            connection.query("select Fname, Lname, email, Agency_id, Shirt_size from volunteer where email = ?", search, function(err, result){
-                if (err) {
-                    console.log(err.message);
-                } else {
-                    console.log('success');
-                    res.send(JSON.stringify(result,null,'\t'));
-                }
-            });
 
 
-
-    });
-    //res.redirect('/admin_search')
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

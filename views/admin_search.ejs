@@ -1,17 +1,11 @@
 <h1>Volunteer Info</h1>
 
-<table>
+<h2>search results</h2>
 
-    <tr>
-        <td><%= profile.Fname %></td>
-        <td><%= profile.Lname %></td>
-        <td><%= profile.Email %></td>
-        <td><%= profile.Phone_num %></td>
-        <td><%= profile.shirt_size %></td>
-        <td><%= profile.Agency_id %></td>
-        <td><%= profile.School_name %></td>
-        <td><%= profile.age %></td>
-        <td><%= profile.status %></td>
-    </tr>
+<%console.log(profile)%>
+<ul>
+<% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
+    <li>first name: <%= element.Fname%></li>
+<%})%>
 
-</table>
+</ul>

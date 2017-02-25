@@ -7,9 +7,8 @@ var app =  require('../app')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('admin_search',{
-        profile: app.search
-    })
+    console.log('admin search get');
+    res.render('admin_search',{})
 });
 
 module.exports = router;
