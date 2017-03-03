@@ -1,156 +1,173 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<%include ./Header.ejs%>
-<%console.log(JSON.stringify(agencies))%>
+<!DOCTYPE HTML>
+<%src="https://maps.googleapis.com/maps/api/js?callback=myMap"%>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/styles/form.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <%include Header%>
+        <%console.log(JSON.stringify(agencies))%>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
-<div class="container">
-    <form method = "post" class="form-horizontal" role="form" action = "/register">
-        <h2>Registration Form</h2>
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">First Name</label>
-            <div class="col-sm-9">
-                <input type="text" id="firstName" name="Fname" placeholder="First Name" class="form-control" autofocus>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Last Name</label>
-            <div class="col-sm-9">
-                <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" autofocus>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-                <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="phoneNumber" class="col-sm-3 control-label">Phone  Number</label>
-            <div class="col-sm-9">
-                <input type="phoneNumber" name="Phone_Num" id="PhoneNumber" placeholder="Phone Number" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Agency" class="col-sm-3 control-label">Agency</label>
-            <div class="col-sm-9">
-                <select id="agency" name="Agency_id" class="form-control">
-                    <option value = '0'>select One</option>
-                    <option value = <%= agencies[0].Agency_ID%>> <%= agencies[0].Agency_name %> </option>
-                    <option value = <%= agencies[1].Agency_ID%>> <%= agencies[1].Agency_name %> </option>
-                </select>
-            </div>
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <label for="shirtSize" class="col-sm-3 control-label">Shirt Size</label>
-            <div class="col-sm-9">
-                <select id="country" name="Shirt_Size" class="form-control">
-                    <option value = "small">Small</option>
-                    <option value = "medium">Medium</option>
-                    <option value = "Large">Large</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="School_name" class="col-sm-3 control-label">School</label>
-            <div class="col-sm-9">
-                <select id="country" name="School_name" class="form-control">
-                    <option value = "UofM_Dearborn">UofM Dearborn</option>
-                    <option value = "Henry_Ford">Henry Ford</option>
-                    <option value = "Eastern">Eastern</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label name="Satus" class="control-label col-sm-3">Status</label>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label class="radio-inline">
-                            <input name="Status" type="radio" id="student" value="student">Student
-                        </label>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="radio-inline">
-                            <input name="Status" type="radio" id="Alumi" value="Alumni">Alumni
-                        </label>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="radio-inline">
-                            <input name="Status" type="radio" id="Faculty" value="Faculty">Faculty
-                        </label>
+        table, th, td {
+            border: 1px solid black;
+            width: 25px;
+        }
+    </style>
+</head>
+        <div class="container">
+            <form method = "post" class="form-horizontal" role="form" action = "/register">
+                <h2>Registration Form</h2>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">*First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" name="Fname" placeholder="Enter First Name" class="form-control" required autofocus>
                     </div>
                 </div>
-            </div>
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <label name ="age" class="control-label col-sm-3">Are you over 18</label>
-            <div class="col-sm-9">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="Age" value="1">Yes
-                    </label>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" required autofocus>
+                    </div>
                 </div>
-            </div>
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </div>
-        </div>
-        <script>$("#agency").on("change", function () {
-                var $modal = $('#myModal');
-                var $modal1 = $('#myModal1');
-                if($(this).val() === '1'){
-                    $modal.modal('show');
-                }
-                else if($(this).val() ==='2'){
-                    $modal1.modal('show');
-                }
-            });</script>
-    </form> <!-- /form -->
-    <!-- Trigger the modal with a button -->
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" name="Email" id="email" placeholder="Email" class="form-control" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone  Number</label>
+                    <div class="col-sm-9">
+                        <input type="phoneNumber" name="Phone_Num" id="PhoneNumber" placeholder="Phone Number" class="form-control" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label name ="age" class="control-label col-sm-3">Are you over 18</label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="Age" value="1">Yes
+                            </label>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <label for="Agency" class="col-sm-3 control-label">Agency</label>
+                    <div class="col-sm-9">
+                        <select id="agency" name="Agency_id" class="form-control">
+                            <option value = '0'>select One</option>
+                            <option value = <%= agencies[0].Agency_ID%>> <%= agencies[0].Agency_name %> </option>
+                            <option value = <%= agencies[1].Agency_ID%>> <%= agencies[1].Agency_name %> </option>
+                        </select>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <label for="shirtSize" class="col-sm-3 control-label">Shirt Size</label>
+                    <div class="col-sm-9">
+                        <select id="country" name="Shirt_Size" class="form-control">
+                            <option value = "small">Small</option>
+                            <option value = "medium">Medium</option>
+                            <option value = "Large">Large</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="School_name" class="col-sm-3 control-label">School</label>
+                    <div class="col-sm-9">
+                        <select id="country" name="School_name" class="form-control">
+                            <option value = "UofM_Dearborn">UofM Dearborn</option>
+                            <option value = "Henry_Ford">Henry Ford</option>
+                            <option value = "Eastern">Eastern</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label name="Satus" class="control-label col-sm-3">Status</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input name="Status" type="radio" id="student" value="student">Student
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input name="Status" type="radio" id="Alumi" value="Alumni">Alumni
+                                </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="radio-inline">
+                                    <input name="Status" type="radio" id="Faculty" value="Faculty">Faculty
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /.form-group -->
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </div>
+                <script>$("#agency").on("change", function () {
+                        var $modal = $('#myModal');
+                        var $modal1 = $('#myModal1');
+                        if($(this).val() === '1'){
+                            $modal.modal('show');
+                        }
+                        else if($(this).val() ==='2'){
+                            $modal1.modal('show');
+                        }
+                    });</script>
+            </form> <!-- /form -->
+            <!-- Trigger the modal with a button -->
 
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Open Modal</button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Open Modal</button>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><%= agencies[0].Agency_name%></h4>
-                </div>
-                <div class="modal-body">
-                    <p><%= agencies[0].description%></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><%= agencies[0].Agency_name%></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><%= agencies[0].description%></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+            <!-- Modal -->
+            <div id="myModal1" class="modal fade" role="dialog">
+                <div class="modal-dialog">
 
-        </div>
-    </div>
-    <!-- Modal -->
-    <div id="myModal1" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><%= agencies[1].Agency_name%></h4>
-                </div>
-                <div class="modal-body">
-                    <p><%= agencies[1].description%></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><%= agencies[1].Agency_name%></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><%= agencies[1].description%></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div> <!-- ./container -->
+        </div> <!-- ./container -->
 
 

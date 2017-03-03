@@ -1,13 +1,26 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/search.css' />
+    <link rel='stylesheet' href='/stylesheets/form.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+</head>
+<%include Header%>
 <h1>Volunteer Info</h1>
 
 <h2>search results</h2>
 
 <%console.log(profile)%>
 <br>
-
-<% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
-    <li>first name: <%= element.Fname%></li> </br>
-    <li>last name: <%= element.Lname%></li>
-<%})%>
-
-</ul>
+    <ul>
+        <% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
+        <li>First Name    : <%= element.Fname%></li> </br>
+        <li>Last Name     : <%= element.Lname%></li> </br>
+        <li>Email Address : <%= element.Email%></li> </br>
+        <li>Shirt Size    : <%= element.Shirt_Size%></li>
+        <%})%>
+    </ul>
+</html>

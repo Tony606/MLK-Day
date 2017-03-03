@@ -1,0 +1,136 @@
+
+body{
+    align-content: center;
+}
+h1{
+    color: darkblue;
+    background-color: aliceblue;
+}
+.banner {
+    height: 90%;
+    width: 65%;
+
+}
+table {
+    width: 100%;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+th {
+
+    width: 100%;
+}
+table tr th{
+    width: auto;
+    padding: 10px 15px;
+    margin: 8px 8px;
+    display: inline-block;
+}
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number]{
+    width: 50%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+header{
+    font-family: script;
+    font-size: 2em;
+    /*height: 110px;*/
+    border-bottom: 5px solid black;
+    background: -webkit-linear-gradient(45deg, rgba(235, 208, 49, 1),white);
+    background:	-o-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background: -moz-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background-image: linear-gradient(45deg, #ebd031, white);
+    text-align: left;
+    width: 100%;
+    height: 175px;
+    margin-top:0;
+    margin-bottom: 0;
+    padding: 0;
+    color: #000066;
+    align-content: center;
+}
+
+
+ul li a{
+
+    background-color: #cac6c9;
+    display: inline-block;
+    color: midnightblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.desc {
+    resize: both;
+    overflow: auto;
+    height: 200px;
+    vertical-align: top;
+    text-align: left;
+    width: 50%;
+}
+
+.dropbtn {
+    background-color: #211d6d;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #bcccd5;
+}
+.dropdown-content a:hover {background-color: #ffe936
+}
+
+.show {display:block;}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
