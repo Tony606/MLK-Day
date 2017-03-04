@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a408ea7c-4410-4851-905a-49e8c46e2fac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/agency_update.js" afterPath="$PROJECT_DIR$/routes/agency_update.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/agency_update.ejs" afterPath="$PROJECT_DIR$/views/agency_update.ejs" />
     </list>
     <ignored path="express_app0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -361,7 +359,7 @@
       <workItem from="1488054780868" duration="4440000" />
       <workItem from="1488061507074" duration="2985000" />
       <workItem from="1488490348944" duration="12295000" />
-      <workItem from="1488579290599" duration="17514000" />
+      <workItem from="1488579290599" duration="17534000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1480796054147</created>
@@ -433,11 +431,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488640280737</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changed header and formatting for all pages. added a &quot;add agency&quot; page. Its not working yet.">
+      <created>1488663462590</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1488663462590</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124667000" />
+    <option name="totallyTimeSpent" value="124687000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
