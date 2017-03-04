@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a408ea7c-4410-4851-905a-49e8c46e2fac" name="Default" comment="changed header and formatting for all pages. added a &quot;add agency&quot; page. Its not working yet.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routes/agency_update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/agency_update.ejs" />
+    <list default="true" id="a408ea7c-4410-4851-905a-49e8c46e2fac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/styles/form.css" afterPath="$PROJECT_DIR$/public/styles/form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/styles/style.css" afterPath="$PROJECT_DIR$/public/styles/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/checkin.js" afterPath="$PROJECT_DIR$/routes/checkin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/Header.ejs" afterPath="$PROJECT_DIR$/views/Header.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin.ejs" afterPath="$PROJECT_DIR$/views/admin.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_search.ejs" afterPath="$PROJECT_DIR$/views/admin_search.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/checkin.ejs" afterPath="$PROJECT_DIR$/views/checkin.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/login.ejs" afterPath="$PROJECT_DIR$/views/login.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/reg_confirm.ejs" afterPath="$PROJECT_DIR$/views/reg_confirm.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/register.ejs" afterPath="$PROJECT_DIR$/views/register.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/users.ejs" afterPath="$PROJECT_DIR$/views/users.ejs" />
     </list>
     <ignored path="express_app0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -383,7 +369,7 @@
       <workItem from="1488054780868" duration="4440000" />
       <workItem from="1488061507074" duration="2985000" />
       <workItem from="1488490348944" duration="12295000" />
-      <workItem from="1488579290599" duration="12061000" />
+      <workItem from="1488579290599" duration="12075000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1480796054147</created>
@@ -441,11 +427,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488501238327</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="changed header and formatting for all pages. added a &quot;add agency&quot; page. Its not working yet.">
+      <created>1488640270593</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1488640270593</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119214000" />
+    <option name="totallyTimeSpent" value="119228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
