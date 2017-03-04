@@ -7,13 +7,12 @@ h1{
     background-color: aliceblue;
 }
 .banner {
-    height: 90%;
+    height: 100%;
     width: 65%;
+    align-content: center;
 
 }
-table {
-    width: 100%;
-}
+
 textarea {
     width: 100%;
     height: 150px;
@@ -25,16 +24,21 @@ textarea {
     font-size: 16px;
     resize: none;
 }
-th {
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+th{
+    background-color: #000066;
+    color: white;
+}
+th, td {
+    text-align: left;
+    padding: 4px;
+    width: 18%;
+}
 
-    width: 100%;
-}
-table tr th{
-    width: auto;
-    padding: 10px 15px;
-    margin: 8px 8px;
-    display: inline-block;
-}
+tr:nth-child(even){background-color: #f2f2f2}
 input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number]{
     width: 50%;
     padding: 10px 15px;
@@ -44,7 +48,6 @@ input[type=text], input[type=password], input[type=email], input[type=tel], inpu
     box-sizing: border-box;
 }
 header{
-    font-family: script;
     font-size: 2em;
     /*height: 110px;*/
     border-bottom: 5px solid black;
@@ -65,12 +68,11 @@ header{
 
 ul li a{
 
-    background-color: #cac6c9;
     display: inline-block;
     color: midnightblue;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    text-decoration: ButtonFace;
+    padding: 1em;
 }
 .desc {
     resize: both;

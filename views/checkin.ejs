@@ -1,9 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/styles/form.css' />
+</head>
 <%include Header%>
 
 <h1>Welcome to the checkin page</h1>
+<form method = "post" class="form-horizontal" role="form" action = "/admin">
+    <div class="form-group">
+        <label for="email">Email</label>
 
+        <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
+
+
+
+        <button type="submit" name ="search" value="search">Search</button>
+    </div>
+</form>
 <form method="post" action="/checkin">
     <label>Profile Search</label>
     <input type="email" name="search">
     <input type="submit" value="search">
 </form>
+
+</html>

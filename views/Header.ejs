@@ -4,10 +4,38 @@
 <html>
 <head>
     <title>MLK Volunteer</title>
-    <link rel='stylesheet' href='/stylesheets/form.css' />
-    <link rel='stylesheet' href='/stylesheets/search.css' />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            display: inline;
+        }
+
+        header{
+            font-family: script;
+            font-size: 2em;
+            /*height: 110px;*/
+            border-bottom: 5px solid black;
+            background: -webkit-linear-gradient(45deg, rgba(235, 208, 49, 1),white);
+            background:	-o-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+            background: -moz-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+            background-image: linear-gradient(45deg, #ebd031, white);
+            text-align: left;
+            width: 100%;
+            height: 155px;
+            margin-top:0;
+            margin-bottom: 0;
+            padding: 0;
+            color: #000066;
+
+        }
+    </style>
 </head>
 
 <header>
@@ -15,16 +43,15 @@
 
 </header>
     <ul>
-        <li >
-            <a href = "./register">Register</a>
-            <a href="./login">Login</a>
-            <a href = "./admin">Admin</a>
-            <a href = "./checkin">Check-in</a>
-            <a href = "./landing">Landing</a>
-            <a href = "./users">Users</a>
-            <a href = "./reg_confirm">Confirm</a>
-            <a href="mailto:jonalars@umich.edu">Contact Us</a>
-            <a href = "images/campus.png">U of M Campus Map</a><img class ="map"/><br>
-        </li>
+
+        <li ><a href = "./register">Register</a></li>
+        <li><a href="./login">Login</a></li>
+        <li><a href = "./admin">Admin</a></li>
+        <li><a href = "./agency_update">Add Agency</a></li>
+        <li><a href = "./checkin">Check-in</a></li>
+        <li><a href = "./users">Users</a></li>
+        <li><a href = "./reg_confirm">Confirm</a></li>
+        <li><a href="mailto:jonalars@umich.edu">Contact Us</a></li>
+        <li><a href = "images/campus.png">U of M Campus Map</a><img class ="map"/></li>
     </ul>
 </html>
