@@ -62,10 +62,11 @@
                 <div class="form-group">
                     <label for="Agency" class="col-sm-3 control-label">Agency</label>
                     <div class="col-sm-9">
-                        <select id="agency" name="Agency_id" class="form-control">
+                        <select id="agency" name="Agency_Id" class="form-control">
                             <option value = '0'>select One</option>
-                            <option value = <%= agencies[0].Agency_ID%>> <%= agencies[0].Agency_name %> </option>
-                            <option value = <%= agencies[1].Agency_ID%>> <%= agencies[1].Agency_name %> </option>
+                            <%agencies.forEach(function(element){console.log('element' +JSON.stringify(element));%>
+                            <option value = <%= element.Agency_Id%>> <%= element.Agency_Name %> </option>
+                            <% })%>>
                         </select>
                     </div>
                 </div> <!-- /.form-group -->
@@ -82,7 +83,7 @@
                 <div class="form-group">
                     <label for="School_name" class="col-sm-3 control-label">School</label>
                     <div class="col-sm-9">
-                        <select id="country" name="School_name" class="form-control">
+                        <select id="country" name="School_Name" class="form-control">
                             <option value = "UofM_Dearborn">UofM Dearborn</option>
                             <option value = "Henry_Ford">Henry Ford</option>
                             <option value = "Eastern">Eastern</option>
@@ -119,7 +120,7 @@
                 <script>$("#agency").on("change", function () {
                         var $modal = $('#myModal');
                         var $modal1 = $('#myModal1');
-                        if($(this).val() === '1'){
+                        if($(this).val() === 'index'){
                             $modal.modal('show');
                         }
                         else if($(this).val() ==='2'){
@@ -138,10 +139,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><%= agencies[0].Agency_name%></h4>
+                            <h4 class="modal-title"><%= agencies[0].Agency_Name%></h4>
                         </div>
                         <div class="modal-body">
-                            <p><%= agencies[0].description%></p>
+                            <p><%= agencies[0].Description%></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -158,10 +159,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><%= agencies[1].Agency_name%></h4>
+                            <h4 class="modal-title"><%= agencies[1].Agency_Name%></h4>
                         </div>
                         <div class="modal-body">
-                            <p><%= agencies[1].description%></p>
+                            <p><%= agencies[1].Description%></p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
