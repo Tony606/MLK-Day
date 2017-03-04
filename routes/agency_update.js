@@ -11,32 +11,8 @@ router.get('/', function(req, res, next) {
     });
 });
 
-// get and request from the page
-router.get('/', function(req, res, next) {//reg the actual page, get page
-    pool.getConnection(function(err,connection){
-        if (err) {
-            res.json({"code" : 100, "status" : "Error in connection database"});
-            return;
-        }
-
-        console.log('connected as id ' + connection.threadId);
-
-        connection.query("select Agency_name, Agency_ID, description from agency", function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-                // rendaring it first time // agencies have result of the queary upthre
-                res.render('register', { title: 'register', agencies: result });//json object with 2 fields
-            }
-        });
-    });
-
-});
-
 router.post('/', function(req,res){
     console.log(JSON.stringify(req.body));
-
     pool.getConnection(function(err,connection){
         if (err) {
             res.json({"code" : 100, "status" : "Error in connection database"});
@@ -44,18 +20,20 @@ router.post('/', function(req,res){
         }
 
         console.log('connected as id ' + connection.threadId);
+        if(req.body) { //req is the request (what is typed into page. body is a json object, search is what everything
+            //gets saved to when you type in the box. search is the variable from the ejs page
+            var post = req.body;
+            connection.query("INSERT INTO agency SET ?", post, function (err, result) {
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    console.log('success' +JSON.stringify(result));
 
-        connection.query("INSERT INTO agency SET ?", post, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-
-            }
+                }
+            });
+        }
         });
-    });
-
-    //res.redirect('/admin');
+    res.redirect('/agency_update');
 
 });
 
