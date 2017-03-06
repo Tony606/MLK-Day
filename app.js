@@ -17,7 +17,8 @@ var admin = require('./routes/admin');
 var checkin = require('./routes/checkin');
 var reg_confirm = require('./routes/reg_confirm');
 var admin_search = require('./routes/admin_search');
-var agency_update = require('./routes/agency_update')
+var agency_update = require('./routes/agency_update');
+var admin_agency_view = require('./routes/admin_agency_view');
 
 
 var app = express();
@@ -55,6 +56,7 @@ app.use('/checkin', checkin);
 app.use('/reg_confirm', reg_confirm);
 app.use('/admin_search', admin_search);
 app.use('/agency_update', agency_update);
+app.use('/admin_agency_view', admin_agency_view);
 
 
 // catch 404 and forward to error handler

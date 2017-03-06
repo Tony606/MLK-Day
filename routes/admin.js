@@ -34,14 +34,27 @@ router.post('/', function(req,res){ //this is the searh route. it will follow th
                     res.render('admin_search', {profile : result}); //renders a page- doing admin_search. //pass whatever you want passed to the page
                 }
             });}
-        else{
+        else if(req.body.dump){
 
             connection.query("select * from volunteer ", function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {
                     console.log('success');
-                    res.send(JSON.stringify(result,null,'\t')); //res is response from backend to browswer
+                    //res.send(JSON.stringify(result,null,'\t')); //res is response from backend to browswer
+                    res.render('admin_search', {profile : result}); //renders a page- doing admin_search. //pass whatever you want passed to the page
+                }
+            });
+        }
+        else if(req.body.Agency){
+
+            connection.query("select * from agency ", function(err, result){
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    console.log('success');
+                    //res.send(JSON.stringify(result,null,'\t')); //res is response from backend to browswer
+                    res.render('admin_agency_view', {profile : result}); //renders a page- doing admin_search. //pass whatever you want passed to the page
                 }
             });
         }

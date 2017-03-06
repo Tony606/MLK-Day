@@ -4,9 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='/styles/form.css' />
+    <link rel='stylesheet' href='/styles/search.css' />
+    <link rel='stylesheet' href='/styles/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th{
+            background-color: #000066;
+            color: white;
+        }
+        th, td {
+            text-align: left;
+            padding: 4px;
+            width: 18%;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+    </style>
 </head>
 <%include Header%>
 <body>
@@ -14,26 +33,26 @@
     <form method = "post" class="form-horizontal" role="form" action = "/admin">
         <div class="form-group">
             <label for="email">Email</label>
-
             <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
-
-
-
             <button type="submit" name ="search" value="search">Search</button>
         </div>
-
-
-                <button type="button"  data-toggle="modal" data-target="#myModal">Add Agency</button>
     </form>
-
-
-    <form method="post" role="form" action="/admin">
+        <form method = "post" class="form-horizontal" role="form" action = "/admin">
+            <div class="form-group">
+                <label for="Agency">Agency Name</label>
+                <input type="text" name="Agency_Name" id="Agency" placeholder="Agency Name" class="form-control">
+                <button type="submit" name ="Agency" value="Agency">Search</button>
+            </div>
+            <div>
+                <a class="button" href = "./agency_update">Add Agency</a>
+            </div>
+    </form>
+    <form method="post" class="form-horizontal" role="form" action="/admin">
         <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" value="Data Dump">Dump</button>
+                <button type="submit" value="dump" name="dump">See All Volunteers</button>
             </div>
         </div>
     </form>
-
 </body>
 </html>
