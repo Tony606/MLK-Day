@@ -1,16 +1,34 @@
-<!DOCTYPE html>
-<%include Header%>
-<html>
+<!DOCTYPE HTML>
+<html lang = "en">
   <head>
+    <meta charset="utf-8">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/styles/form.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="./login">Admin Login</a>
 
+    <%include Header %>
+    <body>
+      <div class="container">
+        <form method ="post" class="form-horizontal" role="form"  action="/login">
 
-    <a href="./register">register</a>
-  </body>
+          <div class="form-group">
+            <h2><%= title %></h2>
+            <p>Welcome to <%= title %></p>
+              <ul style="list-style-type:square">
+                <li><a href =  "./register">Register</a></li> <br>
+                <li><a href =  "./login">Login</a></li> <br>
+                <li><a href =  "./admin">Admin</a></li> <br>
+                <li><a href =  "./agency_update">Add Agency</a></li> <br>
+                <li><a href =  "./checkin">Check-in</a></li> <br>
+                <li><a href =  "./reg_confirm">Confirm</a></li> <br>
+                <li><a href =  "mailto:jonalars@umich.edu">Contact Us</a></li> <br>
+                <li><a href =  "images/campus.png">UM-Dearborn Campus Map</a><img class ="map"/></li>
+              </ul>
+          </div>
+
+        </form>
+      </div>
+    </body>
 </html>
