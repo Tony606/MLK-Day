@@ -65,7 +65,20 @@ header{
     align-content: center;
 }
 
+/* Footer */
 
+.footer, .push {
+    height: 142px;
+    width: 100%;
+    margin: 0;
+    border-bottom: 5px solid black;
+    background: -webkit-linear-gradient(45deg, rgba(235, 208, 49, 1),white);
+    background:	-o-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background: -moz-linear-gradient(45deg,rgba(235, 208, 49, 1),white);
+    background-image: linear-gradient(45deg, #ebd031, white);
+}
+
+/* End Footer */
 ul li a{
 
     display: inline-block;

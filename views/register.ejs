@@ -22,224 +22,234 @@
     </head>
     <body>
     <!-- container -->
-    <div class="container">
-        <%var index = '1';%>
-        <form method = "post" class="form-horizontal" role="form" action = "/register">
-            <div >
-                <h2>MLK Day of Service</h2> <label style="color: #ff0d03">* Required</label>
-                <h3>Registration for MLK Day of Service is OPEN!</h3>
-                <h5 style="color: rgba(90,90,90,0.66)">The 24th Annual Dr. Martin Luther King Jr.
-                    Day of Service will be held on Monday, January 16, 2017.</h5>
-                <h5 style="color: rgba(90,90,90,0.66)">Check-In will be open between 7:45-8:30am
-                    in Kochoff Hall at the University Center on UM-Dearborn's campus.</h5><br>
-            </div>
-
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">First Name:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <input type="text" id="firstName" name="Fname" placeholder="Enter First Name" class="form-control" required autofocus>
+        <div class="container">
+            <%var index = '1';%>
+            <form method = "post" class="form-horizontal" role="form" action = "/register">
+                <div >
+                    <h2>MLK Day of Service</h2> <label style="color: #ff0d03">* Required</label>
+                    <h3>Registration for MLK Day of Service is OPEN!</h3>
+                    <h5 style="color: rgba(90,90,90,0.66)">The 24th Annual Dr. Martin Luther King Jr.
+                        Day of Service will be held on Monday, January 16, 2017.</h5>
+                    <h5 style="color: rgba(90,90,90,0.66)">Check-In will be open between 7:45-8:30am
+                        in Kochoff Hall at the University Center on UM-Dearborn's campus.</h5><br>
                 </div>
-            </div> <!-- ./First Name -->
 
-            <div class="form-group">
-                <label for="lastName" class="col-sm-3 control-label">Last Name:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" required>
-                </div>
-            </div> <!-- ./Last Name -->
-
-            <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <input type="email" name="Email" id="email" placeholder="Email" class="form-control" required>
-                </div>
-            </div> <!-- ./Email -->
-
-            <div class="form-group">
-                <label for="phoneNumber" class="col-sm-3 control-label">Preferred Cell Phone Number: </label>
-                <div class="col-sm-9">
-                    <input type="tel" name="Phone_Num" id="PhoneNumber" placeholder="Phone Number" class="form-control" required>
-                </div>
-            </div> <!-- ./Phone number -->
-
-            <div class="form-group">
-                <label name="Satus" class="control-label col-sm-3">Volunteer Status:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <select id="Status" name="Status" class="form-control" style="width: 50%">
-                        <option value = "Student">Student</option>
-                        <option value = "Staff">Staff</option>
-                        <option value = "Faculty">Faculty</option>
-                        <option value = "Alumni">Alumni</option>
-                    </select>
-                </div>
-            </div> <!-- / Volunteer Status Student, Staff, Faculty, Alumni -->
-
-            <div class="form-group">
-                <label for="School_name" class="col-sm-3 control-label" required>Where do you work/attend college?:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <select id="School_Name" name="School_Name" class="form-control" style="width: 50%">
-                        <option value = "UofM_Dearborn">UofM Dearborn</option>
-                        <option value = "Henry_Ford">Henry Ford</option>
-                    </select>
-                </div>
-            </div> <!-- ./Dropdown School Name -->
-
-            <div class="form-group">
-                <label for="shirtSize" class="col-sm-3 control-label" required>Shirt Size:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <select id="Shirt_Size" name="Shirt_Size" class="form-control" style="width: 50%">
-                        <option value = "Small">Small</option>
-                        <option value = "Medium">Medium</option>
-                        <option value = "Large">Large</option>
-                    </select>
-                </div>
-            </div> <!-- ./Dropdown Shirt Size -->
-
-            <div class="form-group">
-                <label name ="where" class="control-label col-sm-3">How did you hear about MLK Day of Service?: </label>
-                <!-- We are not saving this in DB Yes. Need to figure it out-->
-                <!-- todo -->
-                <div class="col-sm-9">
-                    <div class="checkbox">
-                        <label><input type="checkbox" id="WordofMouth" value="WordofMouth">Word of Mouth</label><br>
-                        <label><input type="checkbox" id="Email" value="Email">Email</label><br>
-                        <label><input type="checkbox" id="Banner/Flier" value="Banner/Flier">Banner/Flier</label><br>
-                        <label><input type="checkbox" id="Facebook" value="Facebook">Facebook</label><br>
-                        <label><input type="checkbox" id="University/CollegeWebsite" value="University/CollegeWebsite">University/College Website</label><br>
-                        <label><input type="checkbox" id="other" value="other">Other:</label>
-                        <input type="text" id="other" class="form-control" style="width: 20%">
-                    </div>
-                </div>
-            </div> <!-- /.Where did you hear about the service -->
-
-            <div class="form-group">
-                <label for="Agency" class="col-sm-3 control-label">Agency:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-9">
-                    <select id="agency" name="Agency_Id" class="form-control"  style="width: 45%" required>
-                        <option value = '0'>select One</option>
-                        <!-- it will check if the capacity is full-->
-                        <%agencies.forEach(function(element){ %>
-                        <%if (element.Num_Of_Registered < element.Capacity){ %>
-                        <option value = <%= element.Agency_Id%>> <%= element.Agency_Name %> </option>
-                        <% }})%>>
-                    </select>
-                        <a type="button" data-toggle="modal" data-target="#myModal">Info!</a>
-                </div>
-            </div> <!-- / Dropdown Agency -->
-
-            <div class="form-group">
-                <label name ="Age" class="control-label col-sm-3">Are you 18 or older?:
-                    <label style="color: #ff0d03">*</label>
-                </label>
-                <div class="col-sm-2">
-                    <label class="radio-inline">
-                        <input name="age" type="radio" value="Yes">Yes
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">First Name:
+                        <label style="color: #ff0d03">*</label>
                     </label>
-                    <label class="radio-inline">
-                        <input name="age" type="radio" value="No">No
-                    </label> <br>
-                    <a type="button" data-toggle="modal" data-target="#myModalfor18">Why?</a>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" name="Fname" placeholder="Enter First Name" class="form-control" required autofocus>
+                    </div>
+                </div> <!-- ./First Name -->
+
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-3 control-label">Last Name:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="lastName" name="Lname" placeholder="last Name" class="form-control" required>
+                    </div>
+                </div> <!-- ./Last Name -->
+
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="email" name="Email" id="email" placeholder="Email" class="form-control" required>
+                    </div>
+                </div> <!-- ./Email -->
+
+                <div class="form-group">
+                    <label for="phoneNumber" class="col-sm-3 control-label">Preferred Cell Phone Number: </label>
+                    <div class="col-sm-9">
+                        <input type="tel" name="Phone_Num" id="PhoneNumber" placeholder="Phone Number" class="form-control" required>
+                    </div>
+                </div> <!-- ./Phone number -->
+
+                <div class="form-group">
+                    <label name="Satus" class="control-label col-sm-3">Volunteer Status:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <select id="Status" name="Status" class="form-control" style="width: 50%">
+                            <option value = "Student">Student</option>
+                            <option value = "Staff">Staff</option>
+                            <option value = "Faculty">Faculty</option>
+                            <option value = "Alumni">Alumni</option>
+                        </select>
+                    </div>
+                </div> <!-- / Volunteer Status Student, Staff, Faculty, Alumni -->
+
+                <div class="form-group">
+                    <label for="School_name" class="col-sm-3 control-label" required>Where do you work/attend college?:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <select id="School_Name" name="School_Name" class="form-control" style="width: 50%">
+                            <option value = "UofM_Dearborn">UofM Dearborn</option>
+                            <option value = "Henry_Ford">Henry Ford</option>
+                        </select>
+                    </div>
+                </div> <!-- ./Dropdown School Name -->
+
+                <div class="form-group">
+                    <label for="shirtSize" class="col-sm-3 control-label" required>Shirt Size:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <select id="Shirt_Size" name="Shirt_Size" class="form-control" style="width: 50%">
+                            <option value = "Small">Small</option>
+                            <option value = "Medium">Medium</option>
+                            <option value = "Large">Large</option>
+                        </select>
+                    </div>
+                </div> <!-- ./Dropdown Shirt Size -->
+
+                <div class="form-group">
+                    <label name ="where" class="control-label col-sm-3">How did you hear about MLK Day of Service?: </label>
+                    <!-- We are not saving this in DB Yes. Need to figure it out-->
                     <!-- todo -->
-                    <!-- This shows modal about info on not 18. Modal is not showing -->
-                </div>
-            </div> <!-- / Age Check Box -->
-
-            <div class="form-group">
-                <label name ="Drive" class="control-label col-sm-3">Would you be willing to drive your personal
-                    vehicle and car pool with other volunteers?: </label>
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <label class="radio-inline">
-                                <input name="drive" type="radio" value="Yes">Yes
-                            </label>
-                        </div>
-                        <div class="col-sm-2">
-                            <label class="radio-inline">
-                                <input name="drive" type="radio" value="No">No
-                            </label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="WordofMouth" value="WordofMouth">Word of Mouth</label><br>
+                            <label><input type="checkbox" id="Email" value="Email">Email</label><br>
+                            <label><input type="checkbox" id="Banner/Flier" value="Banner/Flier">Banner/Flier</label><br>
+                            <label><input type="checkbox" id="Facebook" value="Facebook">Facebook</label><br>
+                            <label><input type="checkbox" id="University/CollegeWebsite" value="University/CollegeWebsite">University/College Website</label><br>
+                            <label><input type="checkbox" id="other" value="other">Other:</label>
+                            <input type="text" id="other" class="form-control" style="width: 20%">
                         </div>
                     </div>
-                </div>
-            </div> <!-- / Can you Drive radio Buttons -->
+                </div> <!-- /.Where did you hear about the service -->
 
-            <div class="form-group">
-                <div class="col-sm-9 col-sm-offset-3">
-                    <button type="submit" class="btn btn-primary btn-block" style="width: 50%">Register</button>
-                </div>
-            </div>
+                <div class="form-group">
+                    <label name ="Age" class="control-label col-sm-3">Are you 18 or older?:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-2">
+                        <label class="radio-inline">
+                            <input name="age" type="radio" value="Yes">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input name="age" type="radio" value="No">No
+                        </label> <br>
+                        <a type="button" data-toggle="modal" data-target="#myModalfor18">Why?</a>
+                        <!-- todo -->
+                        <!-- This shows modal about info on not 18. Modal is not showing -->
+                    </div>
+                </div> <!-- / Age Check Box -->
 
+                <div class="form-group">
+                    <label for="Agency" class="col-sm-3 control-label">Agency:
+                        <label style="color: #ff0d03">*</label>
+                    </label>
+                    <div class="col-sm-9">
+                        <select id="agency" name="Agency_Id" class="form-control"  style="width: 45%" required>
+                            <option value = '0'>select One</option>
+                            <!-- it will check if the capacity is full-->
+                            <%agencies.forEach(function(element){ %>
+                            <%if (element.Num_Of_Registered < element.Capacity){ %>
+                            <option value = <%= element.Agency_Id%>> <%= element.Agency_Name %> </option>
+                            <% }})%>>
+                        </select>
+                            <a type="button" data-toggle="modal" data-target="#myModal">Info!</a>
+                    </div>
+                </div> <!-- / Dropdown Agency -->
+
+                <div class="form-group">
+                    <label name ="Drive" class="control-label col-sm-3">Would you be willing to drive your personal
+                        vehicle and car pool with other volunteers?: </label>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <label class="radio-inline">
+                                    <input name="drive" type="radio" value="Yes">Yes
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label class="radio-inline">
+                                    <input name="drive" type="radio" value="No">No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- / Can you Drive radio Buttons -->
+
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block" style="width: 50%">Register</button>
+                    </div>
+                </div>
+
+                <!-- todo -->
+                <script>$("#agency").on("change", function () {
+                        var $modal = $('#myModal');
+                        if($(this).val() !== '0'){
+                            <%index = '3'%>
+                            $modal.modal('show');
+                        }
+                    });
+                </script>
+
+            </form> <!-- /form -->
+            <!-- Trigger the modal with a button -->
+
+            <!-- Modal for agency info-->
+            <!-- the modals are not working -->
             <!-- todo -->
-            <script>$("#agency").on("change", function () {
-                    var $modal = $('#myModal');
-                    if($(this).val() !== '0'){
-                        $modal.modal('show');
-                    }
-                });
-            </script>
-
-        </form> <!-- /form -->
-        <!-- Trigger the modal with a button -->
-
-        <!-- Modal for agency info-->
-        <!-- the modals are not working -->
-        <!-- todo -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><%= agencies[index].Agency_Name%></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><%= agencies[index].Description%></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><%= agencies[index].Agency_Name%></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><%= agencies[index].Description%></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- ./Modal -->
+            <!-- ./Modal -->
 
-        <!-- Modal for 18 or older -->
-        <div id="myModalfor18" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">If you are not 18 or older</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Due to changes in University policy, as well as restrictions by community agencies,
-                            we are NOT able to allow volunteers who are under the age of 18 to participate in
-                            MLK Day of Service without prior approval. If you have questions, please contact
-                            Jonathan Larson at jonalars@umich.edu</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- Modal for 18 or older -->
+            <div id="myModalfor18" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">If you are not 18 or older</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Due to changes in University policy, as well as restrictions by community agencies,
+                                we are NOT able to allow volunteers who are under the age of 18 to participate in
+                                MLK Day of Service without prior approval. If you have questions, please contact
+                                Jonathan Larson at jonalars@umich.edu</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- ./Modal -->
+            <!-- ./Modal -->
 
-    </div> <!-- ./container -->
+        </div> <!-- ./container -->
+
     </body>
+    <footer>
+        <div class='footer' style="color: #000000">
+            <ul>
+                <li><a href =  "mailto:jonalars@umich.edu">Contact Us</a></li>
+                <li><a href =  "images/campus.png">UM-Dearborn Campus Map</a></li>
+            </ul>
+        </div>
+    </footer>
 </html>
