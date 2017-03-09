@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {//reg the actual page, get page
 
         console.log('connected as id ' + connection.threadId);
 
-        connection.query("select Agency_Name, Agency_Id, Description from agency", function(err, result){
+        connection.query("select * from agency ", function(err, result){
             if (err) {
                 console.log(err.message);
             } else {
@@ -39,24 +39,27 @@ router.post('/', function(req,res){
 
         console.log('connected as id ' + connection.threadId);
         var  post = req.body;
+        console.log('before insert' + JSON.stringify(post));
         connection.query("INSERT INTO volunteer SET ?", post, function(err, result){
             if (err) {
                 console.log(err.message);
             } else {
-                console.log('successfully added volunteer data into DB');
+                console.log('successfully added volunteer data into DB'+ JSON.stringify(post));
             }
         });
 
-        var aID = req.body.Agency_Id;
-        console.log('before success' + JSON.stringify(aID));
-        connection.query("Update mlk_day.agency Set mlk_day.agency.Num_Of_Registered = mlk_day.agency.Num_Of_Registered +1 where mlk_day.agency.Agency_Id =?",
-                            aID, function(err, result){
-            if(err) {
-                console.log(err.message);
-            }else{
-                console.log('successfully updated num of registered in agency table' +JSON.stringify(aID));
-            }
-        });
+        if (!err) {
+            var aID = req.body.Agency_Id;
+            console.log('before update' + JSON.stringify(aID));
+            connection.query("Update mlk_day.agency Set mlk_day.agency.Num_Of_Registered = mlk_day.agency.Num_Of_Registered +1 where mlk_day.agency.Agency_Id =?",
+                aID, function (err, result) {
+                    if (err) {
+                        console.log(err.message);
+                    } else {
+                        console.log('successfully updated num of registered in agency table' + JSON.stringify(aID));
+                    }
+                });
+        }
     });
 
     res.redirect('/reg_confirm');

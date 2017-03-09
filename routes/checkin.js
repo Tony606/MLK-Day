@@ -21,16 +21,28 @@ router.post('/', function(req,res){
 
         console.log('connected as id ' + connection.threadId);
 
-        var  search = req.body.search;
-        connection.query("select Fname, Lname, Email, Agency, Shirt_Size from volunteer where email = ?", search, function(err, result){
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log('success');
-                res.send(JSON.stringify(result,null,'\t'));
-            }
-        });
-
+        if(req.body.search){
+            var  Email = req.body.Email;
+            connection.query("select * from volunteer where Email = ?", Email, function(err, result){
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    console.log('searing email: ' +JSON.stringify(result));
+                    res.render('admin_search', {profile : result});
+                }
+            });
+        }
+        else {
+            var  LName = req.body.LastName;
+            connection.query("select * from volunteer where Lname = ?", LName, function(err, result){
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    console.log('searing lastname: ' +JSON.stringify(result));
+                    res.render('admin_search', {profile : result});
+                }
+            });
+        }
     });
     //res.redirect('/admin_search')
 });

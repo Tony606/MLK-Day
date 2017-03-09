@@ -1,28 +1,36 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/styles/form.css'/>
-</head>
-<%include Header%>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/styles/form.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
 
-<h1>Welcome to the checkin page</h1>
-<form method = "post" class="form-horizontal" role="form" action = "/admin">
-    <div class="form-group">
-        <label for="email">Email</label>
+    <%include Header%>
+    <body>
+        <div class = "container">
+            <form method="post" class="form-horizontal" role = "form" action="/checkin">
+                <h2>Welcome to the checkin page</h2>
 
-        <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label" >Email: </label>
+                    <div class="col-sm-9">
+                        <input type="email" name="Email" id="Email" placeholder="emilia@email.com" class="form-control">
+                        <!-- ./ Search Email box -->
+                        <button type="submit" class="btn btn-primary" name ="search" value="search">Search</button>
+                        <!-- ./Search Email Button -->
+                    </div>
 
-
-
-        <button type="submit" name ="search" value="search">Search</button>
-    </div>
-</form>
-<form method="post" action="/checkin">
-    <label>Last Name</label>
-    <input type="text" name="search">
-    <input type="submit" value="search">
-</form>
-
+                    <label for="LastName" class="col-sm-3 control-label" >Last Name: </label>
+                    <div class="col-sm-9">
+                        <input type="email" name="LastName" id="LastName" placeholder="Clarke" class="form-control">
+                        <!-- ./ Search Last Name box -->
+                        <button type="submit" class="btn btn-primary" name ="searchLname" value="searchLname">Search</button>
+                        <!-- ./Search Last Name Button -->
+                    </div>
+                </div>
+            </form>
+        </div>  <!-- ./Container -->
+    </body>
 </html>

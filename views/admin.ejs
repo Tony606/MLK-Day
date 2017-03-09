@@ -1,58 +1,103 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/styles/form.css' />
-    <link rel='stylesheet' href='/styles/search.css' />
-    <link rel='stylesheet' href='/styles/style.css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th{
-            background-color: #000066;
-            color: white;
-        }
-        th, td {
-            text-align: left;
-            padding: 4px;
-            width: 18%;
-        }
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/styles/form.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        tr:nth-child(even){background-color: #f2f2f2}
-    </style>
-</head>
-<%include Header%>
-<body>
-    <h1>Welcome to the administration page</h1>
-    <form method = "post" class="form-horizontal" role="form" action = "/admin">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="Email" id="email" placeholder="Email" class="form-control">
-            <button type="submit" name ="search" value="search">Search</button>
-        </div>
-    </form>
-        <form method = "post" class="form-horizontal" role="form" action = "/admin">
-            <div class="form-group">
-                <label for="Agency">Agency Name</label>
-                <input type="text" name="Agency_Name" id="Agency" placeholder="Agency Name" class="form-control">
-                <button type="submit" name ="Agency" value="Agency">Search</button>
-            </div>
-            <div>
-                <a class="button" href = "./agency_update">Add Agency</a>
-            </div>
-    </form>
-    <form method="post" class="form-horizontal" role="form" action="/admin">
-        <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" value="dump" name="dump">See All Volunteers</button>
-            </div>
-        </div>
-    </form>
-</body>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                padding: 4px;
+            }
+            th{
+                background-color: #000066;
+                color: white;
+            }
+            th, td {
+                text-align: center;
+                padding: 10px;
+                width: auto;
+            }
+            tr:nth-child(even){
+                background-color: #f2f2f2
+            }
+        </style>
+    </head>
+    <%include Header%>
+    <body>
+    <div class = "container">
+
+        <form method="post" class="form-horizontal" role = "form" action="/admin">
+            <h2>Welcome to the administration page</h2>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Search: </label>
+                    <div class="col-sm-9">
+                        <input type="email" name="search" id="email" placeholder="Jay" class="form-control">
+                        <!-- ./ Search Email box -->
+                        <button type="submit" class="btn btn-primary" name ="search" value="search">Search</button>
+                        <!-- ./Search Email Button -->
+
+                        <button class="btn btn-primary" style="width: auto" type="submit" value="dump" name="dump">See All Volunteers</button>
+                    </div> <!-- /Dump button  -->
+                </div>
+            <br>
+            <br>
+
+                <div style ="overflow-x:auto;">
+                    <table>
+                        <tr align="center">
+                            <th>Agency ID</th>
+                            <th>Locatione</th>
+                            <th>Agency Name</th>
+                            <th>Table Number</th>
+                            <th>Capacity</th>
+                            <th>Number Registered</th>
+                            <th>Number Checked-in</th>
+                            <th>Open Sports</th>
+                            <th>Description</th>
+                            <th>Edit</th>
+                        </tr>
+                        <% liveData.forEach(function(element){%>
+                        <tr align="center">
+                            <td><%= element.Agency_Id%></td>
+                            <td><%= element.Location%></td>
+                            <td><%= element.Agency_Name%></td>
+                            <td><%= element.Table_Num%></td>
+                            <td><%= element.Capacity%></td>
+                            <td><%= element.Num_Of_Registered%></td>
+                            <td><%= element.Num_Of_Checkedin %></td>
+                            <td><%=  (element.Num_Of_Registered) - (element.Num_Of_Checkedin) %></td>
+                            <td><%= element.Description%></td>
+                            <td><button class="btn btn-primary" type="edit" name="edit" value= <%=element.Agency_Id%>>edit</button></td>
+                            <%})%>
+                        </tr>
+                    </table>
+                    <br>
+                </div> <!-- /Agency Table -->
+                <div>
+                   <!-- <a class="btn btn-primary" href = "./agency_update">Add Agency</a> -->
+                </div>
+
+            <!--
+                <div style ="overflow-x:auto;">
+                    <table align="center">
+                        <tr align="center">
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Agency</th>
+                            <th>Shirt Size</th>
+                            <th>School Name</th>
+                            <th>Over 18</th>
+                            <th>Table #</th>
+                        </tr>
+                    </table>
+                </div>
+            -->
+            </form>
+    </div>
+    </body>
 </html>

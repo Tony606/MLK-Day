@@ -1,62 +1,63 @@
 <!DOCTYPE HTML>
-<html lang = "en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/styles/search.css' />
-    <link rel="stylesheet" href="/styles/form.css"/>
-    <link rel="stylesheet" href="/styles/style.css"/>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th{
-            background-color: #000066;
-            color: white;
-        }
-        th, td {
-            text-align: left;
-            padding: 4px;
-            width: 18%;
-        }
-
-        tr:nth-child(even){background-color: #f2f2f2}
-    </style>
-</head>
 <%include Header%>
-<body>
-<h1>Agency Info</h1>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/styles/search.css' />
+        <link rel="stylesheet" href="/styles/form.css"/>
+        <link rel="stylesheet" href="/styles/style.css"/>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+            }
+            th{
+                background-color: #000066;
+                color: white;
+            }
+            th, td {
+                text-align: left;
+                padding: 4px;
+                width: 18%;
+            }
 
-<h2>search results</h2>
-
-<%console.log(profile)%>
-
-<div style ="overflow-x:auto;">
-    <table>
-        <tr>
-            <th>Agency ID/th>
-            <th>Locatione</th>
-            <th>Agency_Name</th>
-            <th>Table Number</th>
-            <th>Capacity</th>
-            <th>Number Registered</th>
-            <th>Number Checked-in</th>
-            <th>Description</th>
-        </tr>
-
-        <% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
-        <tr>
-            <td><%= element.Location%></td>
-            <td><%= element.Agency_Name%></td>
-            <td><%= element.Table_Num%></td>
-            <td><%= element.Capacity%></td>
-            <td><%= element.Num_Of_Registered%></td>
-            <td><%= element.Description%></td>
-            <%})%>
-        </tr>
-    </table>
-</div>
-</body>
+            tr:nth-child(even){background-color: #f2f2f2}
+        </style>
+    </head>
+    <body>
+        <h1>Agency Info</h1>
+        <h2>search results</h2>
+        <%console.log(profile)%>
+        <div style ="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>Agency ID</th>
+                    <th>Locatione</th>
+                    <th>Agency_Name</th>
+                    <th>Table Number</th>
+                    <th>Capacity</th>
+                    <th>Number Registered</th>
+                    <th>Number Checked-in</th>
+                    <th>Open Sports</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                </tr>
+                <% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
+                <tr>
+                    <td><%= element.Agency_Id%></td>
+                    <td><%= element.Location%></td>
+                    <td><%= element.Agency_Name%></td>
+                    <td><%= element.Table_Num%></td>
+                    <td><%= element.Capacity%></td>
+                    <td><%= element.Num_Of_Registered%></td>
+                    <td><%= element.Num_Of_Checkedin %></td>
+                    <td><%=  (element.Num_Of_Registered) - (element.Num_Of_Checkedin) %></td>
+                    <td><%= element.Description%></td>
+                    <td><button type="submit" value= <%element.Agency_Id%> name="edit">edit</button></td>
+                    <%})%>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>

@@ -1,63 +1,71 @@
-<!DOCTYPE HTML>
-<html lang = "en">
+<%src="https://maps.googleapis.com/maps/api/js?callback=myMap"%>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/styles/form.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <%include Header%>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                padding: 4px;
+            }
+            th{
+                background-color: #000066;
+                color: white;
+            }
+            th, td {
+                text-align: center;
+                padding: 10px;
+                width: auto;
+            }
+            tr:nth-child(even){
+                background-color: #f2f2f2
+            }
+        </style>
+    </head>
+    <body>
+    <%var index = '0';%>
+    <!-- container -->
+        <div class="container">
+            <form method = "post" class="form-horizontal" role="form" action = "/register">
+                <h2>Volunteer Info</h2>
+                <h3>search results</h3>
+                <%console.log(profile)%>
+                <div style ="overflow-x:auto;">
+                    <table>
+                        <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Agency</th>
+                        <th>Shirt Size</th>
+                        <th>School Name</th>
+                        <th>Over 18?</th>
+                        <th>Can Drive?</th>
+                        <th>Status</th>
+                        <th>Is Checkedin?</th>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel='stylesheet' href='/styles/search.css' />
-    <link rel="stylesheet" href="/styles/form.css"/>
-    <link rel="stylesheet" href="/styles/style.css"/>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th{
-            background-color: #000066;
-            color: white;
-        }
-        th, td {
-            text-align: left;
-            padding: 4px;
-            width: 18%;
-        }
-
-        tr:nth-child(even){background-color: #f2f2f2}
-    </style>
-</head>
-<%include Header%>
-<body>
-<h1>Volunteer Info</h1>
-
-<h2>search results</h2>
-
-<%console.log(profile)%>
-
-<div style ="overflow-x:auto;">
-    <table>
-        <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Agency</th>
-        <th>Shirt Size</th>
-        <th>School Name</th>
-        <th>Over 18</th>
-        <th>Table #</th>
-        </tr>
-
-        <% profile.forEach(function(element) { console.log( 'element' +JSON.stringify(element));%>
-        <tr>
-            <td><%= element.Fname%></td>
-            <td><%= element.Lname%></td>
-            <td><%= element.Email%></td>
-            <td><%= element.Agency%></td>
-            <td><%= element.Shirt_Size%></td>
-            <td><%= element.School_Name%></td>
-            <td><%= element.Age%></td>
-        <%})%>
-        </tr>
-    </table>
-</div>
-</body>
+                        </tr>
+                        <% profile.forEach(function(element) {%>
+                        <tr>
+                            <td><%= element.Fname%></td>
+                            <td><%= element.Lname%></td>
+                            <td><%= element.Email%></td>
+                            <td><%= element.Agency_Id%></td>
+                            <td><%= element.Shirt_Size%></td>
+                            <td><%= element.School_Name%></td>
+                            <td><%= element.Age%></td>
+                            <td><%= element.Drive%></td>
+                            <td><%= element.Status%></td>
+                            <td><%= element.Is_Checkedin%></td>
+                            <%})%>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

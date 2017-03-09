@@ -6,42 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='/styles/form.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
 </head>
 
 <%include Header%>
     <body>
-        <h1>Welcome to the administrator page</h1>
         <div class = "container">
-        <form method="post" class="form-horizontal" role = "form" action="/agency_update">
+
+            <form method="post" class="form-horizontal" role = "form" action="/agency_update">
+            <h2>Welcome to the administrator page</h2>
+
             <div class ="form-group">
-                <label for="Location" class="col-sm-3 control-label">*Agency Location:</label>
+                <label for="Agency" class="col-sm-3 control-label" >Agency Name: <label style="color: #ff0d03">*</label></label>
                 <div class="col-sm-9">
-                <input type="text" id="Location" class="form-control" placeholder="Enter agency name" name="Location" required autofocus><br>
+                    <input type="text" class="form-control" placeholder="Enter agency name" name="Agency_Name" required>
                 </div>
-            </div>
+            </div> <!-- ./Agency Name -->
+
             <div class ="form-group">
-                <label for="Agency" class="col-sm-3 control-label" >*Agency Name:</label><br>
-                <input type="text" placeholder="Enter agency name" name="Agency_Name" required><br>
-            </div>
+                <label for="Location" class="col-sm-3 control-label">Agency Location: <label style="color: #ff0d03">*</label></label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="Location" placeholder="Enter agency name" required autofocus>
+                </div>
+            </div> <!-- ./Location -->
+
             <div class ="form-group">
-                <label for="Table_Num" class="col-sm-3 control-label">*Table Number:</label><br>
-                <input type="number" placeholder="use scroll bar or enter number" name="Table_Num" required><br>
-            </div>
+                <label for="Capacity" class="col-sm-3 control-label">Capacity: <label style="color: #ff0d03">*</label></label>
+                <div class="col-sm-9">
+                    <input type="number"  class="form-control" placeholder="use scroll bar or enter number" name="Capacity" required>
+                </div>
+            </div> <!-- ./Capacity -->
+
             <div class ="form-group">
-                <label for="Capacity" class="col-sm-3 control-label">*Capacity:</label><br>
-                <input type="number" placeholder="use scroll bar or enter number" name="Capacity" required><br>
-            </div>
+                <label for="Table_Num" class="col-sm-3 control-label"> Table Number: <label style="color: #ff0d03">*</label></label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" placeholder="use scroll bar or enter number" name="Table_Num" required>
+                </div>
+            </div> <!-- ./Table Number -->
+
             <div class ="form-group">
-                <label for="Description" class="col-sm-3 control-label">*Event Description:</label><br>
-                <textarea class ="desc" placeholder="Enter event description" name="Description"></textarea><br>
-            </div>
+                <label for="Description" class="col-sm-3 control-label">Event Description: <label style="color: #ff0d03">*</label></label>
+                <div class="col-sm-9">
+                    <textarea class ="desc" class="form-control" placeholder="Enter event description" name="Description"></textarea>
+                </div>
+            </div> <!-- ./Event Description -->
+
             <div class ="form-group">
                 <div class="col-sm-9 col-sm-offset-3">
-                    <button type="submit" class="btn btn-primary btn-block">Add Agency</button>
+                    <button type="submit" class="btn btn-primary" style="width: 50%">Add Agency</button>
                 </div>
-            </div>
+            </div> <!-- ./Add Button -->
+
         </form>
         </div>
     </body>
