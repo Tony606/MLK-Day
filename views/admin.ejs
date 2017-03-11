@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='/styles/form.css' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <style>
             table {
@@ -31,75 +33,254 @@
 
     <body>
         <div class = "container">
-
+            <%var index = '3';%>
             <form method="post" class="form-horizontal" role = "form" action="/admin">
+
                 <h2>Welcome to the administration page</h2>
-                    <div class="form-group">
-                        <label for="email" class="col-sm-3 control-label">Search: </label>
-                        <div class="col-sm-9">
-                            <input type="email" name="search" id="email" placeholder="First Name or Email" class="form-control">
-                            <!-- ./ Search Email box -->
-                            <button type="submit" class="btn btn-primary" name ="search" value="search">Search</button>
-                            <!-- ./Search Email Button -->
 
-                            <button class="btn btn-primary" style="width: auto" type="submit" value="dump" name="dump">See All Volunteers</button>
-                        </div> <!-- /Dump button  -->
-                    </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Search: </label>
+                    <div class="col-sm-9">
+                        <input type="email" name="search" id="email" placeholder="First Name or Email" class="form-control">
+                        <!-- ./ Search Email box -->
+                        <button type="submit" class="btn btn-primary" name ="search" value="search">Search</button>
+                        <!-- ./Search Email Button -->
+
+                        <button class="btn btn-primary" style="width: auto" type="submit" value="dump" name="dump">See All Volunteers</button>
+                    </div> <!-- /Dump button  -->
+                </div>
+                <!-- search -->
+
                 <br>
                 <br>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label"></label>
+                    <button class="btn btn-primary" type="button" name="info" data-toggle="modal" data-target="#editModal">Edit</button>
+                    <input type="button" onclick="location.href='./agency_update';"  class="btn btn-primary" value="Add" />
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModal">Add2</button>
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                </div>
 
-                    <div style ="overflow-x:auto;">
-                        <table>
-                            <tr align="center">
-                                <th>Agency ID</th>
-                                <th>Locatione</th>
-                                <th>Agency Name</th>
-                                <th>Table Number</th>
-                                <th>Capacity</th>
-                                <th>Number Registered</th>
-                                <th>Number Checked-in</th>
-                                <th>Open Sports</th>
-                                <th>Description</th>
-                                <th>Edit</th>
-                            </tr>
-                            <% liveData.forEach(function(element){%>
-                            <tr align="center">
-                                <td><%= element.Agency_Id%></td>
-                                <td><%= element.Location%></td>
-                                <td><%= element.Agency_Name%></td>
-                                <td><%= element.Table_Num%></td>
-                                <td><%= element.Capacity%></td>
-                                <td><%= element.Num_Of_Registered%></td>
-                                <td><%= element.Num_Of_Checkedin %></td>
-                                <td><%=  (element.Num_Of_Registered) - (element.Num_Of_Checkedin) %></td>
-                                <td><%= element.Description%></td>
-                                <td><button class="btn btn-primary" type="button" name="edit" value= <%=element.Agency_Id%>>edit</button></td>
-                                <%})%>
-                            </tr>
-                        </table>
-                        <br>
-                    </div> <!-- /Agency Table -->
-                    <div>
-                       <!-- <a class="btn btn-primary" href = "./agency_update">Add Agency</a> -->
-                    </div>
+                <div style ="overflow-x:auto;" align="center">
+                    <table>
+                        <tr align="center">
+                            <th></th>
+                            <th>Agency ID</th>
+                            <th>Locatione</th>
+                            <th>Agency Name</th>
+                            <th>Table Number</th>
+                            <th>Capacity</th>
+                            <th>Number Registered</th>
+                            <th>Number Checked-in</th>
+                            <th>Open Sports</th>
+                            <th>Description</th>
+                        </tr>
+                        <% liveData.forEach(function(element){%>
+                        <tr align="center">
+                            <td><input type="radio" name="selectedAgency" value="<%= element.Agency_Id%>"></td>
+                            <td><%= element.Agency_Id%></td>
+                            <td><%= element.Location%></td>
+                            <td><%= element.Agency_Name%></td>
+                            <td><%= element.Table_Num%></td>
+                            <td><%= element.Capacity%></td>
+                            <td><%= element.Num_Of_Registered%></td>
+                            <td><%= element.Num_Of_Checkedin %></td>
+                            <td><%=  (element.Num_Of_Registered) - (element.Num_Of_Checkedin) %></td>
+                            <td><%= element.Description%></td>
+                            <%})%>
+                        </tr>
+                    </table>
+                    <br>
+                </div> <!-- /Agency Table -->
 
-                <!--
-                    <div style ="overflow-x:auto;">
-                        <table align="center">
-                            <tr align="center">
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Agency</th>
-                                <th>Shirt Size</th>
-                                <th>School Name</th>
-                                <th>Over 18</th>
-                                <th>Table #</th>
-                            </tr>
-                        </table>
+                <script>
+                    $('#info').on('click', function() {
+                        var selected = $('input[name="selectedAgency"]:checked').val();
+                        console.log('selected: '+ selected);
+                    });
+
+                    $('#selectedAgency').on('click', function () {
+                        var temp = $(this).val();
+                        console.log('jay: '+ temp);
+                        var $modal = $('#myModal');
+                        //if($(this).val() !== '0'){
+                            $modal.modal('show');
+                        //}
+                    } );
+                </script>
+
+            </form>
+
+            <!-- Modal to update agency info-->
+            <!-- the modals are not saving -->
+            <!-- todo -->
+            <!-- Modal -->
+            <div id="editModal" class="modal fade" role="dialog">
+                <!-- Modal Dialog-->
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit An Agency</h4>
+                        </div> <!-- ./Modal Header -->
+
+                        <div class="modal-body" style="align-content: center">
+                            <form  class="form-horizontal" role="form" style="align-content: center">
+
+                                <div class="form-group">
+                                    <label for="Agency" class="col-sm-3 control-label" >Agency Name:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Agency_Name" value= "<%= liveData[index].Agency_Name%>">
+                                    </div>
+                                </div> <!-- ./Modal Agency Name -->
+
+                                <div class ="form-group">
+                                    <label for="Location" class="col-sm-3 control-label">Agency Location:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Location" value= "<%= liveData[index].Location%>">
+                                    </div>
+                                </div> <!-- ./Modal Agency Location -->
+
+                                <div class ="form-group">
+                                    <label for="Capacity" class="col-sm-3 control-label">Capacity:</label>
+                                    <div class="col-sm-9">
+                                        <input type="number"  class="form-control"  name="Capacity" value= "<%= liveData[index].Capacity%>">
+                                    </div>
+                                </div> <!-- ./Modal Agency Capacity -->
+
+                                <div class ="form-group">
+                                    <label for="Table_Num" class="col-sm-3 control-label"> Table Number:</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="Table_Num" value= "<%= liveData[index].Table_Num%>">
+                                    </div>
+                                </div> <!-- ./Modal Agency Table Number -->
+
+                                <div class ="form-group">
+                                    <label for="Description" class="col-sm-3 control-label">Event Description:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class ="desc" class="form-control" name="Description"> <%= liveData[index].Description%> </textarea>
+                                    </div>
+                                </div> <!-- ./Modal Agency Event Description -->
+
+                            </form>
+                        </div><!-- ./Modal Body -->
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="save" value="save">Save</button>
+                        </div> <!-- ./Modal Footer-->
+
+                    </div> <!-- ./Modal content-->
+                </div> <!-- ./Modal Dialog-->
+            </div> <!-- ./Modal -->
+
+            <!-- Modal for Are you sure you want to Delete?  -->
+            <div id="deleteModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Are you sure you want to Delete?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <label for="Agency" class="col-sm-4 control-label" >Agency Name:</label>
+                                <p><%= liveData[index].Agency_Name%></p>
+                            <label for="Agency" class="col-sm-4 control-label" >Agency Description:</label>
+                                <p><%= liveData[index].Description%></p>
+                        </div>
+                        <div class="modal-footer" align="center">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                        </div>
                     </div>
-                -->
-                </form>
+                </div>
+            </div>
+            <!-- ./Modal -->
+
+            <!-- Modal to update agency info-->
+            <!-- the modals are not saving -->
+            <!-- todo -->
+            <!-- Modal -->
+            <div id="addModal" class="modal fade" role="dialog">
+                <!-- Modal Dialog-->
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit An Agency</h4>
+                        </div> <!-- ./Modal Header -->
+
+                        <div class="modal-body" style="align-content: center">
+                            <form  class="form-horizontal" role="form" style="align-content: center">
+
+                                <div class="form-group">
+                                    <label for="Agency" class="col-sm-3 control-label" >Agency Name:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Agency_Name" placeholder="Enter agency name">
+                                    </div>
+                                </div> <!-- ./Modal Agency Name -->
+
+                                <div class ="form-group">
+                                    <label for="Location" class="col-sm-3 control-label">Agency Location:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Location" placeholder="Enter agency Location">
+                                    </div>
+                                </div> <!-- ./Modal Agency Location -->
+
+                                <div class ="form-group">
+                                    <label for="Capacity" class="col-sm-3 control-label">Capacity:</label>
+                                    <div class="col-sm-9">
+                                        <input type="number"  class="form-control"  name="Capacity" placeholder="use scroll bar or enter number">
+                                    </div>
+                                </div> <!-- ./Modal Agency Capacity -->
+
+                                <div class ="form-group">
+                                    <label for="Table_Num" class="col-sm-3 control-label"> Table Number:</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" name="Table_Num" placeholder="use scroll bar or enter number">
+                                    </div>
+                                </div> <!-- ./Modal Agency Table Number -->
+
+                                <div class ="form-group">
+                                    <label for="Description" class="col-sm-3 control-label">Event Description:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="Description" placeholder="Enter event description"> </textarea>
+                                    </div>
+                                </div> <!-- ./Modal Agency Event Description -->
+
+                            </form>
+                        </div><!-- ./Modal Body -->
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="save" value="save">Save</button>
+                        </div> <!-- ./Modal Footer-->
+
+                    </div> <!-- ./Modal content-->
+                </div> <!-- ./Modal Dialog-->
+            </div> <!-- ./Modal -->
+
         </div>
     </body>
 </html>
+
+
+<!--
+                        <div style ="overflow-x:auto;">
+                            <table align="center">
+                                <tr align="center">
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Agency</th>
+                                    <th>Shirt Size</th>
+                                    <th>School Name</th>
+                                    <th>Over 18</th>
+                                    <th>Table #</th>
+                                </tr>
+                            </table>
+                        </div>
+                    -->

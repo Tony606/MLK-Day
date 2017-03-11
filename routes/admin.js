@@ -37,7 +37,9 @@ router.post('/', function(req,res){
 
         if(req.body.search){
             var  searching = req.body.search;
-            connection.query("select * from volunteer where Email or Lname or Fname = ?", searching, function(err, result){
+            connection.query("Select Fname, Lname, Email, Phone_Num, Shirt_Size, Agency_Name, School_Name, Age, Drive, Status, Is_Checkedin" +
+                " from mlk_day.volunteer JOIN mlk_day.agency" +
+                " where Email or Lname or Fname = ?", searching, function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {
@@ -47,7 +49,9 @@ router.post('/', function(req,res){
             });
         }
         else if(req.body.dump){
-            connection.query("select * from volunteer ", function(err, result){
+            connection.query("Select Fname, Lname, Email, Phone_Num, Shirt_Size, Agency_Name, School_Name, Age, Drive, Status, Is_Checkedin" +
+                             " from mlk_day.volunteer JOIN mlk_day.agency" +
+                             " Where mlk_day.volunteer.Agency_Id = mlk_day.agency.Agency_Id; ", function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {

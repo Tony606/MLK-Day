@@ -47,6 +47,11 @@ input[type=text], input[type=password], input[type=email], input[type=tel], inpu
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+input:first-letter {
+    text-transform: uppercase;
+}
+
 header{
     font-size: 2em;
     /*height: 110px;*/

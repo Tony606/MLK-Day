@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='/styles/form.css' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -179,15 +178,15 @@
 
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block" style="width: 50%">Register</button>
+                        <button type="submit" class="btn btn-primary" style="width: 50%">Register</button>
                     </div>
                 </div>
 
                 <!-- todo -->
                 <script>$("#agency").on("change", function () {
                         var $modal = $('#myModal');
+
                         if($(this).val() !== '0'){
-                            <%index = '3'%>
                             $modal.modal('show');
                         }
                     });
@@ -211,7 +210,7 @@
                             <p><%= agencies[index].Description%></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -234,7 +233,7 @@
                                 Jonathan Larson at jonalars@umich.edu</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
