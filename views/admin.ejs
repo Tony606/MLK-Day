@@ -41,9 +41,9 @@
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Search: </label>
                     <div class="col-sm-9">
-                        <input type="email" name="search" id="email" placeholder="First Name or Email" class="form-control">
+                        <input type="email" name="search" id="search" placeholder="First Name or Email" class="form-control">
                         <!-- ./ Search Email box -->
-                        <button type="submit" class="btn btn-primary" name ="search" value="search">Search</button>
+                        <button type="submit" class="btn btn-primary" name ="search" id="search" value="search">Search</button>
                         <!-- ./Search Email Button -->
 
                         <button class="btn btn-primary" style="width: auto" type="submit" value="dump" name="dump">See All Volunteers</button>
@@ -55,25 +55,25 @@
                 <br>
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label"></label>
-                    <button class="btn btn-primary" type="button" name="info" data-toggle="modal" data-target="#editModal">Edit</button>
+                    <button class="btn btn-primary" type="button" name="edit" data-toggle="modal" data-target="#editModal">Edit</button>
                     <input type="button" onclick="location.href='./agency_update';"  class="btn btn-primary" value="Add" />
-                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModal">Add2</button>
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModal" value="add2">Add2</button>
                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
                 </div>
 
                 <div style ="overflow-x:auto;" align="center">
-                    <table>
+                    <table id = "AgencyTable">
                         <tr align="center">
                             <th></th>
-                            <th>Agency ID</th>
-                            <th>Locatione</th>
-                            <th>Agency Name</th>
-                            <th>Table Number</th>
-                            <th>Capacity</th>
-                            <th>Number Registered</th>
-                            <th>Number Checked-in</th>
-                            <th>Open Sports</th>
-                            <th>Description</th>
+                            <th onclick="sortTable(0)">Agency ID</th>
+                            <th onclick="sortTable(1)">Locatione</th>
+                            <th onclick="sortTable(2)">Agency Name</th>
+                            <th onclick="sortTable(0)">Table Number</th>
+                            <th onclick="sortTable(0)">Capacity</th>
+                            <th onclick="sortTable(1)">Number Registered</th>
+                            <th onclick="sortTable(1)">Number Checked-in</th>
+                            <th onclick="sortTable(0)">Open Sports</th>
+                            <th onclick="sortTable(0)">Description</th>
                         </tr>
                         <% liveData.forEach(function(element){%>
                         <tr align="center">
@@ -94,12 +94,11 @@
                 </div> <!-- /Agency Table -->
 
                 <script>
-                    $('#info').on('click', function() {
-                        var selected = $('input[name="selectedAgency"]:checked').val();
-                        console.log('selected: '+ selected);
-                    });
 
+                    <!-- todo -->
+                    // this is for the checkbox for each row. still working on it.
                     $('#selectedAgency').on('click', function () {
+                        var selected = $('input[name="selectedAgency"]:checked').val();
                         var temp = $(this).val();
                         console.log('jay: '+ temp);
                         var $modal = $('#myModal');
@@ -107,14 +106,32 @@
                             $modal.modal('show');
                         //}
                     } );
+
+                    // This is where edit modal is working and sending data to DB
+                    $(function () {
+                        $('button#addSubmit').click(function () {
+                            $.ajax({
+                                type: "post",
+                                url: "admin",
+                                data: $('form.form-horizontal1').serialize(),
+                                success: function (responce) {
+                                    $("#addModal").modal('hide');
+                                },
+                                error: function () {
+                                    //alert('Error');
+                                }
+                            })
+                            return false;
+                        })
+
+                    })
                 </script>
 
-            </form>
 
             <!-- Modal to update agency info-->
             <!-- the modals are not saving -->
             <!-- todo -->
-            <!-- Modal -->
+            <!-- edit Modal -->
             <div id="editModal" class="modal fade" role="dialog">
                 <!-- Modal Dialog-->
                 <div class="modal-dialog">
@@ -127,7 +144,7 @@
                         </div> <!-- ./Modal Header -->
 
                         <div class="modal-body" style="align-content: center">
-                            <form  class="form-horizontal" role="form" style="align-content: center">
+                            <form  class="form-horizontal2" role="form" style="align-content: center" id="<%liveData[index].Agency_Id%>" name="<%liveData[index].Agency_Id%>">
 
                                 <div class="form-group">
                                     <label for="Agency" class="col-sm-3 control-label" >Agency Name:</label>
@@ -168,7 +185,7 @@
                         </div><!-- ./Modal Body -->
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="save" value="save">Save</button>
+                            <button id="addSubmit" type="button" class="btn btn-primary" data-dismiss="modal" name="editSave" value="editSave">Save</button>
                         </div> <!-- ./Modal Footer-->
 
                     </div> <!-- ./Modal content-->
@@ -203,8 +220,12 @@
             <!-- the modals are not saving -->
             <!-- todo -->
             <!-- Modal -->
+            <script>
+
+            </script>
+
             <div id="addModal" class="modal fade" role="dialog">
-                <!-- Modal Dialog-->
+                <!-- add Modal Dialog-->
                 <div class="modal-dialog">
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -215,7 +236,7 @@
                         </div> <!-- ./Modal Header -->
 
                         <div class="modal-body" style="align-content: center">
-                            <form  class="form-horizontal" role="form" style="align-content: center">
+                            <form class="form-horizontal1" action = "/admin" id="addAgency" method="post"  role="form" style="align-content: center">
 
                                 <div class="form-group">
                                     <label for="Agency" class="col-sm-3 control-label" >Agency Name:</label>
@@ -248,21 +269,59 @@
                                 <div class ="form-group">
                                     <label for="Description" class="col-sm-3 control-label">Event Description:</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" name="Description" placeholder="Enter event description"> </textarea>
+                                        <textarea class ="desc" class="form-control" name="Description" placeholder="Enter event description"> </textarea>
                                     </div>
                                 </div> <!-- ./Modal Agency Event Description -->
+                                <button id="addSubmit" type="submit" class="btn btn-primary" data-dismiss="modal" onClick="window.location.reload()" name="addSubmit" value="addSubmit">Save</button>
 
                             </form>
-                        </div><!-- ./Modal Body -->
+                    </div><!-- ./Modal Body -->
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" name="save" value="save">Save</button>
                         </div> <!-- ./Modal Footer-->
-
                     </div> <!-- ./Modal content-->
                 </div> <!-- ./Modal Dialog-->
             </div> <!-- ./Modal -->
 
+            <script>
+                function sortTable(n) {
+                    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                    table = document.getElementById("AgencyTable");
+                    switching = true;
+                    dir = "asc";
+                    while (switching) {
+                        switching = false;
+                        rows = table.getElementsByTagName("TR");
+                        for (i = 1; i < (rows.length - 1); i++) {
+                            shouldSwitch = false;
+                            x = rows[i].getElementsByTagName("TD")[n];
+                            y = rows[i + 1].getElementsByTagName("TD")[n];
+                            if (dir == "asc") {
+                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                    shouldSwitch= true;
+                                    break;
+                                }
+                            } else if (dir == "desc") {
+                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                    shouldSwitch= true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (shouldSwitch) {
+                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                            switching = true;
+                            switchcount ++;
+                        } else {
+                            if (switchcount == 0 && dir == "asc") {
+                                dir = "desc";
+                                switching = true;
+                            }
+                        }
+                    }
+                }
+            </script>
+             </form>
         </div>
     </body>
 </html>

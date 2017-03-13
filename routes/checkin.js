@@ -32,9 +32,9 @@ router.post('/', function(req,res){
                 }
             });
         }
-        else {
-            var  LName = req.body.LastName;
-            connection.query("select * from volunteer where Lname = ?", LName, function(err, result){
+        else if(req.body.searchLname) {
+            var  LName = req.body.lName;
+            connection.query("select * from volunteer where lName = ?", LName, function(err, result){
                 if (err) {
                     console.log(err.message);
                 } else {
